@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>FuturaOS — POSIX · P2P магазин · Браузер на V8</title>
     <style>
         * {
@@ -25,7 +25,6 @@
             padding: 0 24px;
         }
 
-        /* навигация */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -101,7 +100,6 @@
             background: #fafafa;
         }
 
-        /* герой (без статиcтики) */
         .hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -144,7 +142,6 @@
             font-size: 0.9rem;
         }
 
-        /* секции — без левой полосы, аккуратные заголовки */
         .section {
             margin: 96px 0;
         }
@@ -192,64 +189,83 @@
             color: #4b5563;
         }
 
-        /* новая галерея — горизонтальный скролл + карточки */
-        .gallery-wrapper {
-            margin: 40px 0 20px;
-            overflow-x: auto;
-            scrollbar-width: thin;
-            padding-bottom: 16px;
+        .gallery-section {
+            margin: 80px 0;
         }
 
-        .gallery-horizontal {
+        .gallery-header {
             display: flex;
-            gap: 28px;
-            width: max-content;
-            min-width: 100%;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 32px;
         }
 
-        .gallery-card {
-            width: 320px;
-            flex-shrink: 0;
-            background: #ffffff;
-            border: 1px solid #eef2f8;
-            border-radius: 28px;
-            overflow: hidden;
-            transition: 0.2s;
-            cursor: pointer;
+        .gallery-header h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
 
-        .gallery-card:hover {
-            transform: translateY(-6px);
-            border-color: #cfddee;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+        .gallery-controls {
+            display: flex;
+            gap: 12px;
         }
 
-        .gallery-preview {
-            background: #f5f9ff;
-            aspect-ratio: 4/3;
+        .gallery-nav-btn {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 60px;
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            border-bottom: 1px solid #eef2f8;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 1.3rem;
+            color: #1f2a3e;
         }
 
-        .gallery-info {
-            padding: 20px;
+        .gallery-nav-btn:hover {
+            border-color: #000;
+            background: #f8fafc;
         }
 
-        .gallery-info h4 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 6px;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            transition: 0.2s;
         }
 
-        .gallery-info p {
-            font-size: 0.85rem;
-            color: #5a6e8a;
+        .gallery-card {
+            background: #f8fafc;
+            border-radius: 28px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid #eef2f8;
         }
 
-        /* два блока p2p + браузер */
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            border-color: #cbd5e1;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: #f5f9ff;
+        }
+
         .dual-panel {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -283,7 +299,6 @@
             align-items: center;
         }
 
-        /* скачивание */
         .download-area {
             background: #f5f8fe;
             border-radius: 36px;
@@ -321,11 +336,20 @@
             font-size: 0.85rem;
         }
 
-        @media (max-width: 800px) {
+        @media (max-width: 900px) {
             .hero {
                 grid-template-columns: 1fr;
             }
             .dual-panel {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-grid {
                 grid-template-columns: 1fr;
             }
             .section-title {
@@ -362,7 +386,6 @@
         </div>
     </div>
 
-    <!-- особенности (без левой полосы, заголовок по центру) -->
     <div id="features" class="section">
         <h2 class="section-title">Три кита FuturaOS</h2>
         <div class="grid-3">
@@ -384,52 +407,27 @@
         </div>
     </div>
 
-    <!-- ГАЛЕРЕЯ — ПОЛНОСТЬЮ ПЕРЕДЕЛАНА: горизонтальный скролл, карточки -->
-    <div id="gallery" class="section">
-        <h2 class="section-title">Интерфейсы и возможности</h2>
-        <div class="gallery-wrapper">
-            <div class="gallery-horizontal">
-                <div class="gallery-card" data-gallery="0">
-                    <div class="gallery-preview">🖥️</div>
-                    <div class="gallery-info">
-                        <h4>Рабочий стол</h4>
-                        <p>Чистый минимализм, многозадачность, тёмная/светлая темы.</p>
-                    </div>
-                </div>
-                <div class="gallery-card" data-gallery="1">
-                    <div class="gallery-preview">📦</div>
-                    <div class="gallery-info">
-                        <h4>P2P App Store</h4>
-                        <p>Установка приложений из децентрализованной сети.</p>
-                    </div>
-                </div>
-                <div class="gallery-card" data-gallery="2">
-                    <div class="gallery-preview">🌍</div>
-                    <div class="gallery-info">
-                        <h4>FuturaWeb (V8)</h4>
-                        <p>Браузер с инспектором и высокой производительностью.</p>
-                    </div>
-                </div>
-                <div class="gallery-card" data-gallery="3">
-                    <div class="gallery-preview">💻</div>
-                    <div class="gallery-info">
-                        <h4>Терминал + POSIX</h4>
-                        <p>Полноценное UNIX-окружение, bash, GCC из коробки.</p>
-                    </div>
-                </div>
-                <div class="gallery-card" data-gallery="4">
-                    <div class="gallery-preview">🔧</div>
-                    <div class="gallery-info">
-                        <h4>Системные настройки</h4>
-                        <p>Гибкая кастомизация и управление пакетами.</p>
-                    </div>
-                </div>
+    <div id="gallery" class="gallery-section">
+        <div class="gallery-header">
+            <h2>Галерея</h2>
+            <div class="gallery-controls">
+                <button class="gallery-nav-btn" id="galleryPrev">←</button>
+                <button class="gallery-nav-btn" id="galleryNext">→</button>
             </div>
         </div>
-        <p style="text-align: center; margin-top: 24px; font-size:0.8rem; color:#6c7a91;">→ листайте горизонтально ←</p>
+        <div class="gallery-grid" id="galleryGrid">
+            <div class="gallery-card" data-img="0">
+                <div class="gallery-img">🖥️</div>
+            </div>
+            <div class="gallery-card" data-img="1">
+                <div class="gallery-img">📦</div>
+            </div>
+            <div class="gallery-card" data-img="2">
+                <div class="gallery-img">🌍</div>
+            </div>
+        </div>
     </div>
 
-    <!-- P2P и браузер детально -->
     <div class="dual-panel">
         <div class="panel">
             <h3>📡 P2P магазин приложений</h3>
@@ -455,7 +453,6 @@
         </div>
     </div>
 
-    <!-- Скачивание -->
     <div id="download" class="download-area">
         <h2 style="font-size: 1.9rem; margin-bottom: 12px;">Скачать FuturaOS</h2>
         <p>Выберите образ для вашей архитектуры. Встроенный P2P-клиент и браузер V8.</p>
@@ -491,7 +488,6 @@
         if(el) el.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // модальное окно (минимализм)
     function showModal(title, bodyHtml) {
         let existing = document.getElementById('futuraModal');
         if(existing) existing.remove();
@@ -552,8 +548,111 @@
             if(e.target === overlay) overlay.remove();
         });
     }
-    
-    // P2P демо
+
+    const images = [
+        { emoji: '🖥️', title: 'Рабочий стол FuturaOS', desc: 'Минималистичный интерфейс с поддержкой виджетов, виртуальных рабочих столов и глобального поиска. Тёмная и светлая темы.' },
+        { emoji: '📦', title: 'P2P App Store', desc: 'Установка приложений через распределённую сеть IPFS. Пример: magnet-ссылка или прямой CID. Без цензуры и единой точки отказа.' },
+        { emoji: '🌍', title: 'FuturaWeb (V8)', desc: 'Встроенный браузер на движке V8. Высокая производительность, инструменты разработчика, поддержка WASM, песочница вкладок.' },
+        { emoji: '💻', title: 'Терминал + POSIX', desc: 'Полноценная POSIX-среда: bash, coreutils, GCC, Python, make. Всё работает без дополнительной настройки.' },
+        { emoji: '🔧', title: 'Системные настройки', desc: 'Центр управления: пакеты, P2P-режимы, параметры сети, мониторинг ресурсов и кастомизация окружения.' },
+        { emoji: '🎮', title: 'Игровой режим', desc: 'Низкая задержка, оптимизация для Vulkan и DirectX через Proton. Наслаждайтесь играми без компромиссов.' },
+        { emoji: '📡', title: 'Mesh Network', desc: 'Встроенная поддержка P2P-сетей, обмен файлами без центральных серверов.' },
+        { emoji: '🔐', title: 'Криптография нового поколения', desc: 'Пост-квантовые алгоритмы и полная изоляция процессов.' }
+    ];
+
+    let currentStartIndex = 0;
+    const itemsPerPage = 3;
+    const totalImages = images.length;
+    const galleryGrid = document.getElementById('galleryGrid');
+    const prevBtn = document.getElementById('galleryPrev');
+    const nextBtn = document.getElementById('galleryNext');
+    let autoTimer = null;
+    let userInteracted = false;
+    const AUTO_INTERVAL = 5000;
+
+    function renderGallery() {
+        const cards = [];
+        for(let i = 0; i < itemsPerPage; i++) {
+            const imgIndex = (currentStartIndex + i) % totalImages;
+            const img = images[imgIndex];
+            cards.push(`
+                <div class="gallery-card" data-img="${imgIndex}">
+                    <div class="gallery-img">${img.emoji}</div>
+                </div>
+            `);
+        }
+        galleryGrid.innerHTML = cards.join('');
+        document.querySelectorAll('.gallery-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const idx = parseInt(card.getAttribute('data-img'));
+                const img = images[idx];
+                showModal(img.title, `<p>${img.desc}</p><div style="margin-top:20px; background:#f8fafc; border-radius:20px; padding:24px; text-align:center; font-size:3rem;">${img.emoji}</div>`);
+            });
+        });
+    }
+
+    function nextPage() {
+        currentStartIndex = (currentStartIndex + 1) % totalImages;
+        renderGallery();
+        resetAutoTimer();
+    }
+
+    function prevPage() {
+        currentStartIndex = (currentStartIndex - 1 + totalImages) % totalImages;
+        renderGallery();
+        resetAutoTimer();
+    }
+
+    function resetAutoTimer() {
+        if(autoTimer) {
+            clearInterval(autoTimer);
+            autoTimer = null;
+        }
+        userInteracted = true;
+        autoTimer = setInterval(() => {
+            if(!userInteracted) {
+                nextPage();
+            } else {
+                userInteracted = false;
+            }
+        }, AUTO_INTERVAL);
+    }
+
+    function startAutoTimer() {
+        if(autoTimer) clearInterval(autoTimer);
+        userInteracted = false;
+        autoTimer = setInterval(() => {
+            if(!userInteracted) {
+                nextPage();
+            } else {
+                userInteracted = false;
+            }
+        }, AUTO_INTERVAL);
+    }
+
+    prevBtn.addEventListener('click', () => {
+        prevPage();
+        userInteracted = true;
+    });
+    nextBtn.addEventListener('click', () => {
+        nextPage();
+        userInteracted = true;
+    });
+
+    galleryGrid.addEventListener('wheel', (e) => {
+        if(e.deltaX !== 0 || e.deltaY !== 0) {
+            userInteracted = true;
+            resetAutoTimer();
+        }
+    });
+    galleryGrid.addEventListener('touchstart', () => {
+        userInteracted = true;
+        resetAutoTimer();
+    });
+
+    renderGallery();
+    startAutoTimer();
+
     document.getElementById('openP2PModal')?.addEventListener('click', () => {
         showModal('P2P Магазин приложений', `
             <p>📦 <strong>Каталог децентрализованных приложений</strong><br>
@@ -574,8 +673,7 @@
             <p>⚡ Браузер тесно интегрирован с P2P-протоколами и системой.</p>
         `);
     });
-    
-    // скачивание ISO
+
     const downloadBtns = document.querySelectorAll('.download-iso');
     const statusDiv = document.getElementById('downloadStatus');
     
@@ -610,23 +708,6 @@
     
     document.getElementById('heroP2P')?.addEventListener('click', () => {
         document.getElementById('openP2PModal')?.click();
-    });
-    
-    // новая галерея: клик по карточке
-    const galleryCards = document.querySelectorAll('.gallery-card');
-    const galleryDetails = [
-        { title: 'Рабочий стол FuturaOS', desc: 'Минималистичный интерфейс с поддержкой виджетов, виртуальных рабочих столов и глобального поиска. Тёмная и светлая темы.' },
-        { title: 'P2P App Store', desc: 'Установка приложений через распределённую сеть IPFS. Пример: magnet-ссылка или прямой CID. Без цензуры и единой точки отказа.' },
-        { title: 'FuturaWeb (V8)', desc: 'Встроенный браузер на движке V8. Высокая производительность, инструменты разработчика, поддержка WASM, песочница вкладок.' },
-        { title: 'Терминал + POSIX', desc: 'Полноценная POSIX-среда: bash, coreutils, GCC, Python, make. Всё работает без дополнительной настройки.' },
-        { title: 'Системные настройки', desc: 'Центр управления: пакеты, P2P-режимы, параметры сети, мониторинг ресурсов и кастомизация окружения.' }
-    ];
-    
-    galleryCards.forEach((card, idx) => {
-        card.addEventListener('click', () => {
-            const data = galleryDetails[idx] || galleryDetails[0];
-            showModal(data.title, `<p>${data.desc}</p><div style="margin-top:20px; background:#f8fafc; border-radius:20px; padding:24px; text-align:center;">🖼️ Скриншот модуля FuturaOS</div>`);
-        });
     });
 </script>
 </body>
