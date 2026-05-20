@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FuturaOS — Posix, P2P магазин, браузер на V8</title>
+    <title>FuturaOS — POSIX · P2P магазин · Браузер на V8</title>
     <style>
         * {
             margin: 0;
@@ -14,137 +14,139 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
             background: #ffffff;
-            color: #111111;
+            color: #111827;
             line-height: 1.5;
+            scroll-behavior: smooth;
         }
 
         .container {
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 32px;
+            padding: 0 24px;
         }
 
-        /* header */
-        .header {
-            padding: 48px 0 32px;
-            border-bottom: 1px solid #eaeef2;
+        /* навигация */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 0;
+            border-bottom: 1px solid #eef2f6;
             margin-bottom: 56px;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .logo {
-            font-size: 2.5rem;
+            font-size: 1.9rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            margin-bottom: 8px;
         }
 
         .logo span {
-            background: linear-gradient(135deg, #1a1a1a, #3a3a3a);
+            background: linear-gradient(135deg, #111, #555);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        .tagline {
-            font-size: 1.125rem;
-            color: #4a4a4a;
-            margin-top: 8px;
-        }
-
-        /* hero */
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-            margin-bottom: 80px;
-            align-items: center;
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            margin-bottom: 24px;
-        }
-
-        .hero-content p {
-            font-size: 1.125rem;
-            color: #2c2c2c;
-            margin-bottom: 32px;
-            max-width: 90%;
-        }
-
-        .hero-buttons {
+        .nav-links {
             display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
+            gap: 36px;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e4e;
+            transition: 0.2s;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: #000;
         }
 
         .btn-primary {
             background: #000000;
             color: white;
             border: none;
-            padding: 12px 28px;
-            font-size: 1rem;
+            padding: 10px 26px;
+            font-size: 0.9rem;
             font-weight: 500;
             border-radius: 40px;
             cursor: pointer;
             transition: 0.2s;
-            text-decoration: none;
-            display: inline-block;
         }
 
         .btn-primary:hover {
             background: #2c2c2c;
+            transform: translateY(-1px);
         }
 
         .btn-outline {
             background: transparent;
-            border: 1px solid #cccccc;
-            padding: 12px 28px;
-            font-size: 1rem;
+            border: 1px solid #d0d5dd;
+            padding: 10px 26px;
+            font-size: 0.9rem;
             font-weight: 500;
             border-radius: 40px;
             cursor: pointer;
             transition: 0.2s;
-            color: #111;
         }
 
         .btn-outline:hover {
             border-color: #000;
-            background: #f5f5f5;
+            background: #fafafa;
         }
 
-        .hero-image {
-            background: #f4f6f9;
-            border-radius: 24px;
-            padding: 32px;
+        /* герой (без статиcтики) */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            margin-bottom: 96px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #4b5563;
+            margin-bottom: 32px;
+            max-width: 90%;
+        }
+
+        .mockup {
+            background: #f8fafc;
+            border-radius: 28px;
+            padding: 24px;
+            border: 1px solid #edf2f7;
             text-align: center;
-            border: 1px solid #eef2f5;
         }
 
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
-        }
-
-        .image-placeholder {
-            background: #eef2f5;
+        .mockup-screen {
+            background: #eef2f8;
             border-radius: 20px;
-            width: 100%;
-            aspect-ratio: 16/9;
+            aspect-ratio: 16/10;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #8892a0;
+            color: #5c6f87;
             font-size: 0.9rem;
         }
 
-        /* секция особенностей */
-        .features {
-            margin: 80px 0;
+        /* секции — без левой полосы, аккуратные заголовки */
+        .section {
+            margin: 96px 0;
         }
 
         .section-title {
@@ -152,200 +154,182 @@
             font-weight: 600;
             letter-spacing: -0.01em;
             margin-bottom: 48px;
-            border-left: 4px solid #000;
-            padding-left: 20px;
+            text-align: center;
         }
 
-        .features-grid {
+        .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
         }
 
-        .feature-card {
-            padding: 28px 24px;
-            background: #fbfcfd;
-            border-radius: 20px;
-            border: 1px solid #edf0f3;
-            transition: 0.2s;
-        }
-
-        .feature-card:hover {
-            border-color: #cbd5e1;
+        .card {
             background: #ffffff;
+            border: 1px solid #edf2f7;
+            border-radius: 28px;
+            padding: 32px;
+            transition: 0.2s;
+            text-align: center;
         }
 
-        .feature-icon {
-            font-size: 2rem;
+        .card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+        }
+
+        .card-icon {
+            font-size: 2.4rem;
             margin-bottom: 20px;
         }
 
-        .feature-card h3 {
+        .card h3 {
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 12px;
         }
 
-        .feature-card p {
-            color: #3a3a3a;
-            line-height: 1.5;
+        .card p {
+            color: #4b5563;
         }
 
-        /* Блок для картинок (галерея / скриншоты) */
-        .gallery {
-            margin: 80px 0;
+        /* новая галерея — горизонтальный скролл + карточки */
+        .gallery-wrapper {
+            margin: 40px 0 20px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+            padding-bottom: 16px;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        .gallery-horizontal {
+            display: flex;
             gap: 28px;
-            margin-top: 32px;
+            width: max-content;
+            min-width: 100%;
         }
 
-        .gallery-item {
-            background: #f8fafc;
-            border-radius: 24px;
-            overflow: hidden;
+        .gallery-card {
+            width: 320px;
+            flex-shrink: 0;
+            background: #ffffff;
             border: 1px solid #eef2f8;
+            border-radius: 28px;
+            overflow: hidden;
             transition: 0.2s;
+            cursor: pointer;
         }
 
-        .gallery-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            border-color: #cfddee;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.04);
         }
 
-        .gallery-img {
-            width: 100%;
+        .gallery-preview {
+            background: #f5f9ff;
             aspect-ratio: 4/3;
-            background: #e4e9f0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
-            color: #5e6f8d;
+            font-size: 2.5rem;
+            border-bottom: 1px solid #eef2f8;
         }
 
-        .gallery-caption {
-            padding: 18px 20px;
-            font-weight: 500;
-            border-top: 1px solid #eef2f8;
-            background: white;
+        .gallery-info {
+            padding: 20px;
         }
 
-        /* p2p магазин и браузер */
-        .showcase {
+        .gallery-info h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .gallery-info p {
+            font-size: 0.85rem;
+            color: #5a6e8a;
+        }
+
+        /* два блока p2p + браузер */
+        .dual-panel {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 48px;
-            margin: 80px 0;
+            margin: 72px 0;
         }
 
-        .showcase-block {
+        .panel {
             background: #fafcff;
             border-radius: 32px;
             padding: 36px;
-            border: 1px solid #eef2f5;
+            border: 1px solid #eef2f8;
         }
 
-        .showcase-block h3 {
-            font-size: 1.8rem;
+        .panel h3 {
+            font-size: 1.7rem;
             font-weight: 600;
             margin-bottom: 16px;
         }
 
-        .showcase-block p {
-            color: #3a3a3a;
-            margin-bottom: 24px;
-        }
-
-        .mockup-list {
-            margin-top: 24px;
+        .feature-list {
             list-style: none;
+            margin: 28px 0;
         }
 
-        .mockup-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #edf0f5;
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eff3f8;
             display: flex;
+            gap: 12px;
             align-items: center;
-            gap: 10px;
         }
 
-        /* скачивание ISO */
-        .download-section {
-            background: #f5f7fb;
-            border-radius: 32px;
+        /* скачивание */
+        .download-area {
+            background: #f5f8fe;
+            border-radius: 36px;
             padding: 56px 48px;
-            margin: 80px 0;
             text-align: center;
+            margin: 80px 0;
         }
 
-        .download-cards {
+        .download-buttons {
             display: flex;
             justify-content: center;
-            gap: 32px;
+            gap: 28px;
             flex-wrap: wrap;
             margin: 40px 0 20px;
         }
 
-        .download-option {
+        .download-card {
             background: white;
             border-radius: 24px;
-            padding: 28px 32px;
-            min-width: 220px;
+            padding: 24px 28px;
+            min-width: 200px;
             border: 1px solid #e2e8f0;
-            transition: 0.2s;
         }
 
-        .download-option:hover {
-            border-color: #000;
-            transform: translateY(-3px);
+        .download-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
         }
 
-        .download-option h4 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-        }
-
-        .download-btn {
-            background: #000;
-            color: white;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 60px;
-            margin-top: 20px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .download-btn:hover {
-            background: #333;
-        }
-
-        footer {
-            border-top: 1px solid #eef2f5;
-            padding: 48px 0 64px;
+        .footer {
+            border-top: 1px solid #edf2f7;
+            padding: 48px 0 56px;
             text-align: center;
-            color: #6b7280;
-            font-size: 0.875rem;
+            color: #6c7a91;
+            font-size: 0.85rem;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 800px) {
             .hero {
                 grid-template-columns: 1fr;
-                gap: 40px;
             }
-            .showcase {
+            .dual-panel {
                 grid-template-columns: 1fr;
             }
-            .container {
-                padding: 0 24px;
-            }
             .section-title {
-                font-size: 1.6rem;
+                font-size: 1.7rem;
             }
         }
     </style>
@@ -353,170 +337,199 @@
 <body>
 
 <div class="container">
-    <div class="header">
+    <div class="navbar">
         <div class="logo">Futura<span>OS</span></div>
-        <div class="tagline">Posix-совместимая | P2P магазин приложений | Браузер на V8</div>
+        <div class="nav-links">
+            <a onclick="scrollToSection('features')">Особенности</a>
+            <a onclick="scrollToSection('gallery')">Галерея</a>
+            <a onclick="scrollToSection('download')">Скачать</a>
+        </div>
     </div>
 
     <div class="hero">
-        <div class="hero-content">
-            <h1>Операционная система нового поколения</h1>
-            <p>FuturaOS сочетает полную совместимость с POSIX, децентрализованный магазин приложений и встроенный браузер на движке V8. Свобода. Производительность. Прозрачность.</p>
-            <div class="hero-buttons">
-                <button class="btn-primary" id="downloadMainBtn">Скачать ISO</button>
-                <button class="btn-outline" id="exploreP2P">Магазин приложений</button>
+        <div>
+            <h1>POSIX. P2P магазин. V8 браузер.</h1>
+            <p>FuturaOS — операционная система с полной совместимостью UNIX, децентрализованной установкой приложений и быстрым браузером на движке V8. Без компромиссов.</p>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <button class="btn-primary" id="heroDownload">Скачать ISO</button>
+                <button class="btn-outline" id="heroP2P">Открыть P2P магазин</button>
             </div>
         </div>
-        <div class="hero-image">
-            <div class="image-placeholder">
-                🖥️ FuturaOS Desktop — интерфейс
+        <div class="mockup">
+            <div class="mockup-screen">
+                🖥️ FuturaOS Desktop — чистый интерфейс
             </div>
         </div>
     </div>
 
-    <!-- Особенности: POSIX, P2P, браузер -->
-    <div class="features">
-        <h2 class="section-title">Ключевые возможности</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🐚</div>
+    <!-- особенности (без левой полосы, заголовок по центру) -->
+    <div id="features" class="section">
+        <h2 class="section-title">Три кита FuturaOS</h2>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-icon">🐚</div>
                 <h3>POSIX-совместимость</h3>
-                <p>Запускайте bash, coreutils, GCC, Python и любой код, соответствующий стандарту. FuturaOS полностью сертифицирована POSIX.1-2024.</p>
+                <p>Полная поддержка POSIX.1-2024. Запускайте bash, coreutils, GCC, Python и любой код без изменений.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔄</div>
+            <div class="card">
+                <div class="card-icon">🔄</div>
                 <h3>P2P магазин приложений</h3>
-                <p>Децентрализованная установка приложений через magnet-ссылки и IPFS. Никаких централизованных репозиториев — только пользовательская сеть.</p>
+                <p>Децентрализованная установка через IPFS и magnet-ссылки. Никаких центральных серверов.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🌐</div>
+            <div class="card">
+                <div class="card-icon">🌐</div>
                 <h3>Браузер на V8</h3>
-                <p>Собственный браузер "FuturaWeb" с движком V8 и современным CSS/JS. Быстрый, безопасный и легкий. Расширения на WebAssembly.</p>
+                <p>Встроенный браузер FuturaWeb с движком V8, WebAssembly 2.0 и современными API.</p>
             </div>
         </div>
     </div>
 
-    <!-- БЛОК ДЛЯ КАРТИНОК (скриншоты, галерея) -->
-    <div class="gallery">
-        <h2 class="section-title">Интерфейс и возможности</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <div class="gallery-img">📸 Рабочий стол FuturaOS</div>
-                <div class="gallery-caption">Многозадачность и кастомные виджеты</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-img">📦 P2P Магазин приложений</div>
-                <div class="gallery-caption">Установка через децентрализованную сеть</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-img">🌍 FuturaWeb Browser (V8)</div>
-                <div class="gallery-caption">Встроенный браузер с DevTools</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-img">💻 Терминал и POSIX окружение</div>
-                <div class="gallery-caption">Полная совместимость с UNIX-утилитами</div>
+    <!-- ГАЛЕРЕЯ — ПОЛНОСТЬЮ ПЕРЕДЕЛАНА: горизонтальный скролл, карточки -->
+    <div id="gallery" class="section">
+        <h2 class="section-title">Интерфейсы и возможности</h2>
+        <div class="gallery-wrapper">
+            <div class="gallery-horizontal">
+                <div class="gallery-card" data-gallery="0">
+                    <div class="gallery-preview">🖥️</div>
+                    <div class="gallery-info">
+                        <h4>Рабочий стол</h4>
+                        <p>Чистый минимализм, многозадачность, тёмная/светлая темы.</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-gallery="1">
+                    <div class="gallery-preview">📦</div>
+                    <div class="gallery-info">
+                        <h4>P2P App Store</h4>
+                        <p>Установка приложений из децентрализованной сети.</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-gallery="2">
+                    <div class="gallery-preview">🌍</div>
+                    <div class="gallery-info">
+                        <h4>FuturaWeb (V8)</h4>
+                        <p>Браузер с инспектором и высокой производительностью.</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-gallery="3">
+                    <div class="gallery-preview">💻</div>
+                    <div class="gallery-info">
+                        <h4>Терминал + POSIX</h4>
+                        <p>Полноценное UNIX-окружение, bash, GCC из коробки.</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-gallery="4">
+                    <div class="gallery-preview">🔧</div>
+                    <div class="gallery-info">
+                        <h4>Системные настройки</h4>
+                        <p>Гибкая кастомизация и управление пакетами.</p>
+                    </div>
+                </div>
             </div>
         </div>
+        <p style="text-align: center; margin-top: 24px; font-size:0.8rem; color:#6c7a91;">→ листайте горизонтально ←</p>
     </div>
 
-    <!-- Блок P2P магазин + браузер детально -->
-    <div class="showcase">
-        <div class="showcase-block">
-            <h3>📦 P2P App Store</h3>
-            <p>Установка приложений из распределенной сети. Каждое приложение подписано ключами разработчиков. Нет цензуры, нет единой точки отказа.</p>
-            <ul class="mockup-list">
-                <li>🔗 magnet-ссылки + IPFS хеши</li>
-                <li>⚡ Автоматические обновления через DHT</li>
-                <li>🛡️ Верификация кода перед установкой</li>
+    <!-- P2P и браузер детально -->
+    <div class="dual-panel">
+        <div class="panel">
+            <h3>📡 P2P магазин приложений</h3>
+            <p>Полностью децентрализованный каталог. Приложения распространяются через IPFS и DHT. Каждый пользователь — узел сети.</p>
+            <ul class="feature-list">
+                <li>🔗 Установка по magnet-ссылке или CID</li>
+                <li>⚡ Дельта-обновления без перезагрузки</li>
+                <li>🛡️ Верификация цифровыми подписями</li>
+                <li>📊 Рейтинг на основе репутации пиров</li>
             </ul>
-            <button class="btn-outline" style="margin-top: 20px;" id="demoP2P">Открыть магазин (демо)</button>
+            <button class="btn-outline" id="openP2PModal">Открыть магазин (демо)</button>
         </div>
-        <div class="showcase-block">
-            <h3>🌐 FuturaWeb Browser</h3>
-            <p>Браузер на движке Google V8, полностью интегрированный в ОС. Поддержка современных веб-стандартов, WebAssembly, режим "песочницы".</p>
-            <ul class="mockup-list">
-                <li>⚙️ JavaScript JIT компиляция</li>
-                <li>🔒 Изоляция вкладок</li>
-                <li>🧩 Магазин расширений на WASM</li>
+        <div class="panel">
+            <h3>🌐 FuturaWeb на V8</h3>
+            <p>Собственный браузер с движком V8 от Google. Высокая скорость и полная совместимость с веб-стандартами.</p>
+            <ul class="feature-list">
+                <li>⚙️ JIT-компиляция и оптимизация</li>
+                <li>🔒 Песочница для каждой вкладки</li>
+                <li>🧩 Расширения на WebAssembly</li>
+                <li>📱 Режим адаптивной разработки</li>
             </ul>
-            <button class="btn-outline" style="margin-top: 20px;" id="demoBrowser">Запустить браузер (демо)</button>
+            <button class="btn-outline" id="openBrowserModal">Запустить браузер (демо)</button>
         </div>
     </div>
 
-    <!-- Скачивание образов -->
-    <div class="download-section">
-        <h2 style="font-size: 1.8rem; margin-bottom: 12px;">Скачать FuturaOS</h2>
-        <p>Выберите образ для своей архитектуры. ISO содержит базовую систему + P2P-клиент и браузер.</p>
-        <div class="download-cards">
-            <div class="download-option">
-                <h4>FuturaOS Desktop</h4>
-                <p>AMD64 / Intel 64-bit</p>
-                <p style="font-size:0.8rem;">Версия 2.5 LTS</p>
-                <button class="download-btn" data-iso="futuraos-desktop-amd64.iso">Скачать ISO (2.8 GB)</button>
+    <!-- Скачивание -->
+    <div id="download" class="download-area">
+        <h2 style="font-size: 1.9rem; margin-bottom: 12px;">Скачать FuturaOS</h2>
+        <p>Выберите образ для вашей архитектуры. Встроенный P2P-клиент и браузер V8.</p>
+        <div class="download-buttons">
+            <div class="download-card">
+                <h4>Desktop AMD64</h4>
+                <p style="font-size:0.8rem;">Стабильная версия 2.5 LTS</p>
+                <button class="btn-primary download-iso" data-iso="FuturaOS_2.5_amd64.iso">Скачать ISO</button>
             </div>
-            <div class="download-option">
-                <h4>FuturaOS ARM64</h4>
+            <div class="download-card">
+                <h4>ARM64 (Preview)</h4>
                 <p>Raspberry Pi / Apple Silicon</p>
-                <p style="font-size:0.8rem;">Предустановленный браузер</p>
-                <button class="download-btn" data-iso="futuraos-arm64.iso">Скачать IMG (2.4 GB)</button>
+                <button class="btn-primary download-iso" data-iso="FuturaOS_2.5_arm64.iso">Скачать IMG</button>
             </div>
-            <div class="download-option">
+            <div class="download-card">
                 <h4>Live USB</h4>
                 <p>Загрузка без установки</p>
-                <p style="font-size:0.8rem;">Попробуйте перед установкой</p>
-                <button class="download-btn" data-iso="futuraos-live.iso">Скачать Live ISO (3.0 GB)</button>
+                <button class="btn-primary download-iso" data-iso="FuturaOS_live_2.5.iso">Live ISO</button>
             </div>
         </div>
-        <p style="margin-top: 32px; font-size:0.8rem; color:#5a6a7a;">🔐 SHA256: 4f8a...c7d2 (подпись доступна в репозитории)</p>
-        <div id="downloadMessage" style="margin-top: 20px; font-size:0.9rem; color:#2c6e2c;"></div>
+        <p style="font-size:0.7rem; margin-top: 24px;">SHA-256: 4b3a...d1e7 | Подпись в репозитории</p>
+        <div id="downloadStatus" style="margin-top: 16px; font-size:0.85rem;"></div>
     </div>
 
-    <footer>
-        FuturaOS — свободная POSIX-система с децентрализованным магазином приложений и современным браузером. Проект с открытым исходным кодом.
-    </footer>
+    <div class="footer">
+        FuturaOS — открытая POSIX-система с P2P-магазином и браузером на V8. Свободное распространение.
+    </div>
 </div>
 
 <script>
-    // Модальное окно для демонстрации P2P магазина и браузера (просто информационные окна)
-    function showModal(title, content) {
-        // создаем временное модальное окно (минималистичное)
-        let existingModal = document.getElementById('dynamicModal');
-        if(existingModal) existingModal.remove();
+    function scrollToSection(id) {
+        const el = document.getElementById(id);
+        if(el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // модальное окно (минимализм)
+    function showModal(title, bodyHtml) {
+        let existing = document.getElementById('futuraModal');
+        if(existing) existing.remove();
         
-        const modalDiv = document.createElement('div');
-        modalDiv.id = 'dynamicModal';
-        modalDiv.style.position = 'fixed';
-        modalDiv.style.top = '0';
-        modalDiv.style.left = '0';
-        modalDiv.style.width = '100%';
-        modalDiv.style.height = '100%';
-        modalDiv.style.backgroundColor = 'rgba(0,0,0,0.4)';
-        modalDiv.style.backdropFilter = 'blur(4px)';
-        modalDiv.style.display = 'flex';
-        modalDiv.style.alignItems = 'center';
-        modalDiv.style.justifyContent = 'center';
-        modalDiv.style.zIndex = '1000';
+        const overlay = document.createElement('div');
+        overlay.id = 'futuraModal';
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0,0,0,0.35)';
+        overlay.style.backdropFilter = 'blur(3px)';
+        overlay.style.display = 'flex';
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        overlay.style.zIndex = '2000';
         
-        const modalBox = document.createElement('div');
-        modalBox.style.background = 'white';
-        modalBox.style.maxWidth = '500px';
-        modalBox.style.width = '90%';
-        modalBox.style.borderRadius = '28px';
-        modalBox.style.padding = '32px';
-        modalBox.style.boxShadow = '0 25px 40px rgba(0,0,0,0.1)';
-        modalBox.style.border = '1px solid #eef2f5';
+        const card = document.createElement('div');
+        card.style.background = 'white';
+        card.style.maxWidth = '520px';
+        card.style.width = '90%';
+        card.style.borderRadius = '28px';
+        card.style.padding = '32px';
+        card.style.boxShadow = '0 20px 35px rgba(0,0,0,0.1)';
+        card.style.border = '1px solid #eef2f8';
         
-        const modalTitle = document.createElement('h3');
-        modalTitle.innerText = title;
-        modalTitle.style.fontSize = '1.6rem';
-        modalTitle.style.fontWeight = '600';
-        modalTitle.style.marginBottom = '20px';
+        const titleElem = document.createElement('h3');
+        titleElem.innerText = title;
+        titleElem.style.fontSize = '1.6rem';
+        titleElem.style.fontWeight = '600';
+        titleElem.style.marginBottom = '20px';
         
-        const modalContent = document.createElement('div');
-        modalContent.innerHTML = content;
-        modalContent.style.color = '#2d3a48';
-        modalContent.style.lineHeight = '1.5';
-        modalContent.style.marginBottom = '28px';
+        const contentElem = document.createElement('div');
+        contentElem.innerHTML = bodyHtml;
+        contentElem.style.color = '#2c3e50';
+        contentElem.style.lineHeight = '1.5';
+        contentElem.style.marginBottom = '28px';
         
         const closeBtn = document.createElement('button');
         closeBtn.innerText = 'Закрыть';
@@ -527,52 +540,53 @@
         closeBtn.style.borderRadius = '60px';
         closeBtn.style.cursor = 'pointer';
         closeBtn.style.fontWeight = '500';
-        closeBtn.onclick = () => modalDiv.remove();
+        closeBtn.onclick = () => overlay.remove();
         
-        modalBox.appendChild(modalTitle);
-        modalBox.appendChild(modalContent);
-        modalBox.appendChild(closeBtn);
-        modalDiv.appendChild(modalBox);
-        document.body.appendChild(modalDiv);
+        card.appendChild(titleElem);
+        card.appendChild(contentElem);
+        card.appendChild(closeBtn);
+        overlay.appendChild(card);
+        document.body.appendChild(overlay);
         
-        modalDiv.addEventListener('click', (e) => {
-            if(e.target === modalDiv) modalDiv.remove();
+        overlay.addEventListener('click', (e) => {
+            if(e.target === overlay) overlay.remove();
         });
     }
     
-    document.getElementById('exploreP2P')?.addEventListener('click', () => {
-        showModal('P2P Магазин приложений FuturaOS', 
-            `<p>📦 <strong>Децентрализованный каталог</strong><br>
-            Доступные приложения: FuturaWriter, PeerChat, Web IDE, V8 DevTools, MeshVPN.<br><br>
-            🔗 Установка через magnet-ссылку: <code style="background:#f0f2f5;padding:2px 6px;border-radius:12px;">magnet:?xt=urn:btih:...</code><br>
-            📡 P2P-рейтинг и верификация сообществом. Сеть IPFS шлюз активен.
-            </p><p style="margin-top:12px;">✅ Встроенный клиент уже в системе.</p>`
-        );
+    // P2P демо
+    document.getElementById('openP2PModal')?.addEventListener('click', () => {
+        showModal('P2P Магазин приложений', `
+            <p>📦 <strong>Каталог децентрализованных приложений</strong><br>
+            Доступно: <strong>FuturaWriter</strong>, <strong>PeerChat</strong>, <strong>V8 Studio</strong>, <strong>MeshVPN</strong>, <strong>IPFS Desktop</strong>, <strong>MediaCoder</strong> и более 2000 пакетов.</p>
+            <p>🔗 Пример magnet-ссылки:<br> <code style="background:#f0f2f5;padding:4px 8px;border-radius:12px;display:inline-block;">magnet:?xt=urn:btih:futura_editor_latest</code></p>
+            <p>✅ Клиент автоматически загружает и верифицирует приложения через P2P-сеть.</p>
+        `);
     });
     
-    document.getElementById('demoBrowser')?.addEventListener('click', () => {
-        showModal('FuturaWeb Browser (V8 Engine)', 
-            `<p>🌐 <strong>Браузер на движке V8 12.4</strong><br>
-            ✔️ Поддержка ES2024, WebAssembly, WebGL<br>
-            ✔️ Встроенные DevTools, режим разработчика<br>
-            ✔️ Блокировка трекеров без расширений<br><br>
-            🧪 <em>Демо-версия: быстрый рендеринг, оценка <strong>100%</strong> в тестах Speedometer.</em>
-            </p><hr style="margin:16px 0; border-color:#eee;"><p>⚡ Браузер запущен в FuturaOS — наслаждайтесь скоростью.</p>`
-        );
+    document.getElementById('openBrowserModal')?.addEventListener('click', () => {
+        showModal('FuturaWeb Browser (V8)', `
+            <p>🌐 <strong>Браузер на движке V8 12.5</strong><br>
+            ✔️ Производительность: 100% в Speedometer 3.0<br>
+            ✔️ WebGPU, WebCodecs, WASM SIMD<br>
+            ✔️ Встроенный отладчик и элементы разработчика<br>
+            🚀 <em>Скорость загрузки страниц выше Chrome на 18%</em></p>
+            <hr style="margin:14px 0;">
+            <p>⚡ Браузер тесно интегрирован с P2P-протоколами и системой.</p>
+        `);
     });
     
-    // Обработка скачивания образов (имитация реального скачивания .iso)
-    const downloadBtns = document.querySelectorAll('.download-btn');
-    const msgDiv = document.getElementById('downloadMessage');
+    // скачивание ISO
+    const downloadBtns = document.querySelectorAll('.download-iso');
+    const statusDiv = document.getElementById('downloadStatus');
     
     downloadBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
+            e.stopPropagation();
             const isoName = btn.getAttribute('data-iso');
             if(isoName) {
-                if(msgDiv) msgDiv.innerHTML = `⏳ Подготовка образа ${isoName}... (шифрование канала)`;
-                // Создаем "фейковый" iso-файл с информацией (демо-загрузка)
-                const content = `FuturaOS образ: ${isoName}\nPOSIX-совместимая ОС с P2P-магазином и браузером на V8. Официальный ISO подписан ключом разработчика.`;
-                const blob = new Blob([content], {type: 'application/x-iso9660-image'});
+                if(statusDiv) statusDiv.innerHTML = `⏳ Подготовка образа ${isoName}...`;
+                const content = `FuturaOS образ: ${isoName}\nPOSIX + P2P магазин + браузер V8.\nКонтрольная сумма: a1f9c8e3d4b2`;
+                const blob = new Blob([content], {type: 'application/octet-stream'});
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
@@ -581,38 +595,39 @@
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-                if(msgDiv) msgDiv.innerHTML = `✅ Загрузка ${isoName} началась. Проверьте папку "Загрузки".`;
+                if(statusDiv) statusDiv.innerHTML = `✅ Загрузка ${isoName} началась (демо-файл). Реальный ISO ~2.8 ГБ.`;
                 setTimeout(() => {
-                    if(msgDiv) msgDiv.innerHTML = '';
-                }, 4000);
-            } else {
-                if(msgDiv) msgDiv.innerHTML = '❌ Ошибка: образ не найден.';
+                    if(statusDiv) statusDiv.innerHTML = '';
+                }, 3500);
             }
         });
     });
     
-    const downloadMainBtn = document.getElementById('downloadMainBtn');
-    if(downloadMainBtn) {
-        downloadMainBtn.addEventListener('click', () => {
-            const isoBtn = document.querySelector('.download-btn');
-            if(isoBtn) isoBtn.click();
-        });
-    }
+    document.getElementById('heroDownload')?.addEventListener('click', () => {
+        const first = document.querySelector('.download-iso');
+        if(first) first.click();
+    });
     
-    // Добавляем пару интерактивных "картинок" с лёгким описанием
-    const galleryImgs = document.querySelectorAll('.gallery-img');
-    galleryImgs.forEach((imgDiv, idx) => {
-        imgDiv.style.cursor = 'pointer';
-        imgDiv.addEventListener('click', () => {
-            let description = '';
-            if(idx === 0) description = 'Рабочий стол с кастомизируемой панелью, поддержка виртуальных рабочих столов.';
-            if(idx === 1) description = 'P2P-магазин: поиск приложений через распределенные хеш-таблицы.';
-            if(idx === 2) description = 'FuturaWeb: V8, современный CSS, инспектор и отладчик.';
-            if(idx === 3) description = 'Терминал с bash/zsh, компилятор GCC, полная совместимость с POSIX.';
-            showModal('Интерфейс FuturaOS', `<p>${description}</p><div style="background:#f5f7fa; border-radius:16px; padding:16px; margin-top:12px;">🖼️ Скриншот: детальный вид функционала.</div>`);
+    document.getElementById('heroP2P')?.addEventListener('click', () => {
+        document.getElementById('openP2PModal')?.click();
+    });
+    
+    // новая галерея: клик по карточке
+    const galleryCards = document.querySelectorAll('.gallery-card');
+    const galleryDetails = [
+        { title: 'Рабочий стол FuturaOS', desc: 'Минималистичный интерфейс с поддержкой виджетов, виртуальных рабочих столов и глобального поиска. Тёмная и светлая темы.' },
+        { title: 'P2P App Store', desc: 'Установка приложений через распределённую сеть IPFS. Пример: magnet-ссылка или прямой CID. Без цензуры и единой точки отказа.' },
+        { title: 'FuturaWeb (V8)', desc: 'Встроенный браузер на движке V8. Высокая производительность, инструменты разработчика, поддержка WASM, песочница вкладок.' },
+        { title: 'Терминал + POSIX', desc: 'Полноценная POSIX-среда: bash, coreutils, GCC, Python, make. Всё работает без дополнительной настройки.' },
+        { title: 'Системные настройки', desc: 'Центр управления: пакеты, P2P-режимы, параметры сети, мониторинг ресурсов и кастомизация окружения.' }
+    ];
+    
+    galleryCards.forEach((card, idx) => {
+        card.addEventListener('click', () => {
+            const data = galleryDetails[idx] || galleryDetails[0];
+            showModal(data.title, `<p>${data.desc}</p><div style="margin-top:20px; background:#f8fafc; border-radius:20px; padding:24px; text-align:center;">🖼️ Скриншот модуля FuturaOS</div>`);
         });
     });
 </script>
-
 </body>
-  </html>
+</html>
