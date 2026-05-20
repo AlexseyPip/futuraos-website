@@ -81,7 +81,6 @@
 
         .btn-primary:hover {
             background: #2c2c2c;
-            transform: translateY(-1px);
         }
 
         .btn-outline {
@@ -165,13 +164,7 @@
             border: 1px solid #edf2f7;
             border-radius: 28px;
             padding: 32px;
-            transition: 0.2s;
             text-align: center;
-        }
-
-        .card:hover {
-            border-color: #cbd5e1;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
         }
 
         .card-icon {
@@ -237,7 +230,6 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 28px;
-            transition: 0.2s;
         }
 
         .gallery-card {
@@ -246,14 +238,7 @@
             overflow: hidden;
             aspect-ratio: 4/3;
             cursor: pointer;
-            transition: 0.2s;
             border: 1px solid #eef2f8;
-        }
-
-        .gallery-card:hover {
-            transform: translateY(-5px);
-            border-color: #cbd5e1;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.04);
         }
 
         .gallery-img {
@@ -417,13 +402,13 @@
         </div>
         <div class="gallery-grid" id="galleryGrid">
             <div class="gallery-card" data-img="0">
-                <div class="gallery-img">🖥️</div>
+                <div class="gallery-img"></div>
             </div>
             <div class="gallery-card" data-img="1">
-                <div class="gallery-img">📦</div>
+                <div class="gallery-img"></div>
             </div>
             <div class="gallery-card" data-img="2">
-                <div class="gallery-img">🌍</div>
+                <div class="gallery-img"></div>
             </div>
         </div>
     </div>
@@ -550,14 +535,14 @@
     }
 
     const images = [
-        { emoji: '🖥️', title: 'Рабочий стол FuturaOS', desc: 'Минималистичный интерфейс с поддержкой виджетов, виртуальных рабочих столов и глобального поиска. Тёмная и светлая темы.' },
-        { emoji: '📦', title: 'P2P App Store', desc: 'Установка приложений через распределённую сеть IPFS. Пример: magnet-ссылка или прямой CID. Без цензуры и единой точки отказа.' },
-        { emoji: '🌍', title: 'FuturaWeb (V8)', desc: 'Встроенный браузер на движке V8. Высокая производительность, инструменты разработчика, поддержка WASM, песочница вкладок.' },
-        { emoji: '💻', title: 'Терминал + POSIX', desc: 'Полноценная POSIX-среда: bash, coreutils, GCC, Python, make. Всё работает без дополнительной настройки.' },
-        { emoji: '🔧', title: 'Системные настройки', desc: 'Центр управления: пакеты, P2P-режимы, параметры сети, мониторинг ресурсов и кастомизация окружения.' },
-        { emoji: '🎮', title: 'Игровой режим', desc: 'Низкая задержка, оптимизация для Vulkan и DirectX через Proton. Наслаждайтесь играми без компромиссов.' },
-        { emoji: '📡', title: 'Mesh Network', desc: 'Встроенная поддержка P2P-сетей, обмен файлами без центральных серверов.' },
-        { emoji: '🔐', title: 'Криптография нового поколения', desc: 'Пост-квантовые алгоритмы и полная изоляция процессов.' }
+        { title: 'Рабочий стол FuturaOS', desc: 'Минималистичный интерфейс с поддержкой виджетов, виртуальных рабочих столов и глобального поиска. Тёмная и светлая темы.' },
+        { title: 'P2P App Store', desc: 'Установка приложений через распределённую сеть IPFS. Пример: magnet-ссылка или прямой CID. Без цензуры и единой точки отказа.' },
+        { title: 'FuturaWeb (V8)', desc: 'Встроенный браузер на движке V8. Высокая производительность, инструменты разработчика, поддержка WASM, песочница вкладок.' },
+        { title: 'Терминал + POSIX', desc: 'Полноценная POSIX-среда: bash, coreutils, GCC, Python, make. Всё работает без дополнительной настройки.' },
+        { title: 'Системные настройки', desc: 'Центр управления: пакеты, P2P-режимы, параметры сети, мониторинг ресурсов и кастомизация окружения.' },
+        { title: 'Игровой режим', desc: 'Низкая задержка, оптимизация для Vulkan и DirectX через Proton. Наслаждайтесь играми без компромиссов.' },
+        { title: 'Mesh Network', desc: 'Встроенная поддержка P2P-сетей, обмен файлами без центральных серверов.' },
+        { title: 'Криптография нового поколения', desc: 'Пост-квантовые алгоритмы и полная изоляция процессов.' }
     ];
 
     let currentStartIndex = 0;
@@ -574,10 +559,9 @@
         const cards = [];
         for(let i = 0; i < itemsPerPage; i++) {
             const imgIndex = (currentStartIndex + i) % totalImages;
-            const img = images[imgIndex];
             cards.push(`
                 <div class="gallery-card" data-img="${imgIndex}">
-                    <div class="gallery-img">${img.emoji}</div>
+                    <div class="gallery-img"></div>
                 </div>
             `);
         }
@@ -586,7 +570,7 @@
             card.addEventListener('click', () => {
                 const idx = parseInt(card.getAttribute('data-img'));
                 const img = images[idx];
-                showModal(img.title, `<p>${img.desc}</p><div style="margin-top:20px; background:#f8fafc; border-radius:20px; padding:24px; text-align:center; font-size:3rem;">${img.emoji}</div>`);
+                showModal(img.title, `<p>${img.desc}</p><div style="margin-top:20px; background:#f8fafc; border-radius:20px; padding:24px; text-align:center; font-size:1rem; color:#5c6f87;">Скриншот модуля FuturaOS</div>`);
             });
         });
     }
