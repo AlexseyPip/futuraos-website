@@ -12,7 +12,6 @@
     <meta name="copyright" content="FuturaOS">
     <meta http-equiv="Content-Language" content="ru">
     
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://futuraos.org">
     <meta property="og:title" content="FuturaOS — POSIX · P2P магазин · Браузер на V8">
@@ -23,7 +22,6 @@
     <meta property="og:site_name" content="FuturaOS">
     <meta property="og:locale" content="ru_RU">
     
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="FuturaOS — POSIX · P2P магазин · Браузер на V8">
     <meta name="twitter:description" content="Операционная система нового поколения с полной POSIX-совместимостью, децентрализованным P2P магазином и браузером на V8.">
@@ -31,6 +29,8 @@
     
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23000000'/%3E%3Ctext x='50' y='72' font-size='52' font-family='Arial, Helvetica, sans-serif' font-weight='bold' fill='%23ffffff' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
     <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23000000'/%3E%3Ctext x='50' y='72' font-size='52' font-family='Arial' font-weight='bold' fill='%23ffffff' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         * {
@@ -174,6 +174,7 @@
             justify-content: center;
             color: #5c6f87;
             font-size: 0.9rem;
+            gap: 8px;
         }
 
         .section {
@@ -205,6 +206,7 @@
         .card-icon {
             font-size: 2.4rem;
             margin-bottom: 20px;
+            color: #000;
         }
 
         .card h3 {
@@ -274,16 +276,14 @@
             aspect-ratio: 4/3;
             cursor: pointer;
             border: 1px solid #eef2f8;
-        }
-
-        .gallery-img {
-            width: 100%;
-            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            background: #f5f9ff;
+        }
+
+        .gallery-icon {
+            font-size: 5rem;
+            color: #1a1a1a;
         }
 
         .dual-panel {
@@ -317,6 +317,11 @@
             display: flex;
             gap: 12px;
             align-items: center;
+        }
+
+        .feature-list li i {
+            width: 24px;
+            color: #000;
         }
 
         .download-area {
@@ -401,13 +406,13 @@
             <h1>POSIX. P2P магазин. V8 браузер.</h1>
             <p>FuturaOS — операционная система с полной совместимостью UNIX, децентрализованной установкой приложений и быстрым браузером на движке V8. Без компромиссов.</p>
             <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-                <button class="btn-primary" id="heroDownload">Скачать ISO</button>
-                <button class="btn-outline" id="heroP2P">Открыть P2P магазин</button>
+                <button class="btn-primary" id="heroDownload"><i class="fas fa-download" style="margin-right: 8px;"></i>Скачать ISO</button>
+                <button class="btn-outline" id="heroP2P"><i class="fas fa-store" style="margin-right: 8px;"></i>Открыть P2P магазин</button>
             </div>
         </div>
         <div class="mockup">
             <div class="mockup-screen">
-                🖥️ FuturaOS Desktop — чистый интерфейс
+                <i class="fas fa-desktop" style="margin-right: 8px;"></i> FuturaOS Desktop — чистый интерфейс
             </div>
         </div>
     </div>
@@ -416,17 +421,17 @@
         <h2 class="section-title">Три кита FuturaOS</h2>
         <div class="grid-3">
             <div class="card">
-                <div class="card-icon">🐚</div>
+                <div class="card-icon"><i class="fas fa-terminal"></i></div>
                 <h3>POSIX-совместимость</h3>
                 <p>Полная поддержка POSIX.1-2024. Запускайте bash, coreutils, GCC, Python и любой код без изменений.</p>
             </div>
             <div class="card">
-                <div class="card-icon">🔄</div>
+                <div class="card-icon"><i class="fas fa-network-wired"></i></div>
                 <h3>P2P магазин приложений</h3>
                 <p>Децентрализованная установка через IPFS и magnet-ссылки. Никаких центральных серверов.</p>
             </div>
             <div class="card">
-                <div class="card-icon">🌐</div>
+                <div class="card-icon"><i class="fas fa-globe"></i></div>
                 <h3>Браузер на V8</h3>
                 <p>Встроенный браузер FuturaWeb с движком V8, WebAssembly 2.0 и современными API.</p>
             </div>
@@ -437,66 +442,56 @@
         <div class="gallery-header">
             <h2>Галерея</h2>
             <div class="gallery-controls">
-                <button class="gallery-nav-btn" id="galleryPrev">←</button>
-                <button class="gallery-nav-btn" id="galleryNext">→</button>
+                <button class="gallery-nav-btn" id="galleryPrev"><i class="fas fa-chevron-left"></i></button>
+                <button class="gallery-nav-btn" id="galleryNext"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
-        <div class="gallery-grid" id="galleryGrid">
-            <div class="gallery-card" data-img="0">
-                <div class="gallery-img">🖥️</div>
-            </div>
-            <div class="gallery-card" data-img="1">
-                <div class="gallery-img">📦</div>
-            </div>
-            <div class="gallery-card" data-img="2">
-                <div class="gallery-img">🌍</div>
-            </div>
-        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
     </div>
 
     <div class="dual-panel">
         <div class="panel">
-            <h3>📡 P2P магазин приложений</h3>
+            <h3><i class="fas fa-store" style="margin-right: 12px;"></i> P2P магазин приложений</h3>
             <p>Полностью децентрализованный каталог. Приложения распространяются через IPFS и DHT. Каждый пользователь — узел сети.</p>
             <ul class="feature-list">
-                <li>🔗 Установка по magnet-ссылке или CID</li>
-                <li>⚡ Дельта-обновления без перезагрузки</li>
-                <li>🛡️ Верификация цифровыми подписями</li>
-                <li>📊 Рейтинг на основе репутации пиров</li>
+                <li><i class="fas fa-link"></i> Установка по magnet-ссылке или CID</li>
+                <li><i class="fas fa-bolt"></i> Дельта-обновления без перезагрузки</li>
+                <li><i class="fas fa-shield-alt"></i> Верификация цифровыми подписями</li>
+                <li><i class="fas fa-chart-line"></i> Рейтинг на основе репутации пиров</li>
             </ul>
-            <button class="btn-outline" id="openP2PModal">Открыть магазин (демо)</button>
+            <button class="btn-outline" id="openP2PModal"><i class="fas fa-store"></i> Открыть магазин (демо)</button>
         </div>
         <div class="panel">
-            <h3>🌐 FuturaWeb на V8</h3>
+            <h3><i class="fab fa-chrome" style="margin-right: 12px;"></i> FuturaWeb на V8</h3>
             <p>Собственный браузер с движком V8 от Google. Высокая скорость и полная совместимость с веб-стандартами.</p>
             <ul class="feature-list">
-                <li>⚙️ JIT-компиляция и оптимизация</li>
-                <li>🔒 Песочница для каждой вкладки</li>
-                <li>🧩 Расширения на WebAssembly</li>
-                <li>📱 Режим адаптивной разработки</li>
+                <li><i class="fas fa-tachometer-alt"></i> JIT-компиляция и оптимизация</li>
+                <li><i class="fas fa-lock"></i> Песочница для каждой вкладки</li>
+                <li><i class="fas fa-puzzle-piece"></i> Расширения на WebAssembly</li>
+                <li><i class="fas fa-mobile-alt"></i> Режим адаптивной разработки</li>
             </ul>
-            <button class="btn-outline" id="openBrowserModal">Запустить браузер (демо)</button>
+            <button class="btn-outline" id="openBrowserModal"><i class="fas fa-globe"></i> Запустить браузер (демо)</button>
         </div>
     </div>
 
     <div id="download" class="download-area">
-        <h2 style="font-size: 1.9rem; margin-bottom: 12px;">Скачать FuturaOS</h2>
+        <h2 style="font-size: 1.9rem; margin-bottom: 12px;"><i class="fas fa-download"></i> Скачать FuturaOS</h2>
         <p>Выберите образ для вашей архитектуры. Встроенный P2P-клиент и браузер V8.</p>
         <div class="download-buttons">
             <div class="download-card">
-                <h4>Desktop AMD64</h4>
+                <h4><i class="fas fa-desktop"></i> Desktop AMD64</h4>
                 <p style="font-size:0.8rem;">Стабильная версия 2.5 LTS</p>
-                <button class="btn-primary download-iso" data-iso="FuturaOS_2.5_amd64.iso">Скачать ISO</button>
+                <button class="btn-primary download-iso" data-iso="FuturaOS_2.5_amd64.iso"><i class="fas fa-download"></i> Скачать ISO</button>
             </div>
             <div class="download-card">
-                <h4>ARM64 (Preview)</h4>
+                <h4><i class="fas fa-microchip"></i> ARM64 (Preview)</h4>
                 <p>Raspberry Pi / Apple Silicon</p>
-                <button class="btn-primary download-iso" data-iso="FuturaOS_2.5_arm64.iso">Скачать IMG</button>
+                <button class="btn-primary download-iso" data-iso="FuturaOS_2.5_arm64.iso"><i class="fas fa-download"></i> Скачать IMG</button>
             </div>
             <div class="download-card">
-                <h4>Live USB</h4>
+                <h4><i class="fas fa-usb"></i> Live USB</h4>
                 <p>Загрузка без установки</p>
-                <button class="btn-primary download-iso" data-iso="FuturaOS_live_2.5.iso">Live ISO</button>
+                <button class="btn-primary download-iso" data-iso="FuturaOS_live_2.5.iso"><i class="fas fa-download"></i> Live ISO</button>
             </div>
         </div>
         <p style="font-size:0.7rem; margin-top: 24px;">SHA-256: 4b3a...d1e7 | Подпись в репозитории</p>
@@ -504,7 +499,7 @@
     </div>
 
     <div class="footer">
-        FuturaOS — открытая POSIX-система с P2P-магазином и браузером на V8. Свободное распространение.
+        <p><i class="fas fa-code-branch"></i> FuturaOS — открытая POSIX-система с P2P-магазином и браузером на V8. Свободное распространение.</p>
     </div>
 </div>
 
@@ -582,7 +577,7 @@
         contentElem.style.marginBottom = '28px';
         
         const closeBtn = document.createElement('button');
-        closeBtn.innerText = 'Закрыть';
+        closeBtn.innerHTML = '<i class="fas fa-times"></i> Закрыть';
         closeBtn.style.background = '#000';
         closeBtn.style.color = 'white';
         closeBtn.style.border = 'none';
@@ -604,14 +599,14 @@
     }
 
     const images = [
-        { emoji: '🖥️', title: 'Рабочий стол FuturaOS', desc: 'Минималистичный интерфейс с поддержкой виджетов, виртуальных рабочих столов и глобального поиска. Тёмная и светлая темы.' },
-        { emoji: '📦', title: 'P2P App Store', desc: 'Установка приложений через распределённую сеть IPFS. Пример: magnet-ссылка или прямой CID. Без цензуры и единой точки отказа.' },
-        { emoji: '🌍', title: 'FuturaWeb (V8)', desc: 'Встроенный браузер на движке V8. Высокая производительность, инструменты разработчика, поддержка WASM, песочница вкладок.' },
-        { emoji: '💻', title: 'Терминал + POSIX', desc: 'Полноценная POSIX-среда: bash, coreutils, GCC, Python, make. Всё работает без дополнительной настройки.' },
-        { emoji: '🔧', title: 'Системные настройки', desc: 'Центр управления: пакеты, P2P-режимы, параметры сети, мониторинг ресурсов и кастомизация окружения.' },
-        { emoji: '🎮', title: 'Игровой режим', desc: 'Низкая задержка, оптимизация для Vulkan и DirectX через Proton. Наслаждайтесь играми без компромиссов.' },
-        { emoji: '📡', title: 'Mesh Network', desc: 'Встроенная поддержка P2P-сетей, обмен файлами без центральных серверов.' },
-        { emoji: '🔐', title: 'Криптография нового поколения', desc: 'Пост-квантовые алгоритмы и полная изоляция процессов.' }
+        { icon: 'fa-desktop', title: 'Рабочий стол FuturaOS', desc: 'Минималистичный интерфейс с поддержкой виджетов, виртуальных рабочих столов и глобального поиска. Тёмная и светлая темы.' },
+        { icon: 'fa-store', title: 'P2P App Store', desc: 'Установка приложений через распределённую сеть IPFS. Пример: magnet-ссылка или прямой CID. Без цензуры и единой точки отказа.' },
+        { icon: 'fa-globe', title: 'FuturaWeb (V8)', desc: 'Встроенный браузер на движке V8. Высокая производительность, инструменты разработчика, поддержка WASM, песочница вкладок.' },
+        { icon: 'fa-terminal', title: 'Терминал + POSIX', desc: 'Полноценная POSIX-среда: bash, coreutils, GCC, Python, make. Всё работает без дополнительной настройки.' },
+        { icon: 'fa-sliders-h', title: 'Системные настройки', desc: 'Центр управления: пакеты, P2P-режимы, параметры сети, мониторинг ресурсов и кастомизация окружения.' },
+        { icon: 'fa-gamepad', title: 'Игровой режим', desc: 'Низкая задержка, оптимизация для Vulkan и DirectX через Proton. Наслаждайтесь играми без компромиссов.' },
+        { icon: 'fa-wifi', title: 'Mesh Network', desc: 'Встроенная поддержка P2P-сетей, обмен файлами без центральных серверов.' },
+        { icon: 'fa-shield-alt', title: 'Криптография нового поколения', desc: 'Пост-квантовые алгоритмы и полная изоляция процессов.' }
     ];
 
     let currentStartIndex = 0;
@@ -631,7 +626,7 @@
             const img = images[imgIndex];
             cards.push(`
                 <div class="gallery-card" data-img="${imgIndex}">
-                    <div class="gallery-img">${img.emoji}</div>
+                    <i class="fas ${img.icon} gallery-icon"></i>
                 </div>
             `);
         }
@@ -640,7 +635,7 @@
             card.addEventListener('click', () => {
                 const idx = parseInt(card.getAttribute('data-img'));
                 const img = images[idx];
-                showModal(img.title, `<p>${img.desc}</p><div style="margin-top:20px; background:#f8fafc; border-radius:20px; padding:24px; text-align:center; font-size:3rem;">${img.emoji}</div>`);
+                showModal(img.title, `<p>${img.desc}</p><div style="margin-top:20px; background:#f8fafc; border-radius:20px; padding:24px; text-align:center; font-size:4rem;"><i class="fas ${img.icon}"></i></div>`);
             });
         });
     }
@@ -713,22 +708,22 @@
 
     document.getElementById('openP2PModal')?.addEventListener('click', () => {
         showModal('P2P Магазин приложений', `
-            <p>📦 <strong>Каталог децентрализованных приложений</strong><br>
+            <p><i class="fas fa-store"></i> <strong>Каталог децентрализованных приложений</strong><br>
             Доступно: <strong>FuturaWriter</strong>, <strong>PeerChat</strong>, <strong>V8 Studio</strong>, <strong>MeshVPN</strong>, <strong>IPFS Desktop</strong>, <strong>MediaCoder</strong> и более 2000 пакетов.</p>
-            <p>🔗 Пример magnet-ссылки:<br> <code style="background:#f0f2f5;padding:4px 8px;border-radius:12px;display:inline-block;">magnet:?xt=urn:btih:futura_editor_latest</code></p>
-            <p>✅ Клиент автоматически загружает и верифицирует приложения через P2P-сеть.</p>
+            <p><i class="fas fa-link"></i> Пример magnet-ссылки:<br> <code style="background:#f0f2f5;padding:4px 8px;border-radius:12px;display:inline-block;">magnet:?xt=urn:btih:futura_editor_latest</code></p>
+            <p><i class="fas fa-check-circle"></i> Клиент автоматически загружает и верифицирует приложения через P2P-сеть.</p>
         `);
     });
     
     document.getElementById('openBrowserModal')?.addEventListener('click', () => {
         showModal('FuturaWeb Browser (V8)', `
-            <p>🌐 <strong>Браузер на движке V8 12.5</strong><br>
+            <p><i class="fab fa-chrome"></i> <strong>Браузер на движке V8 12.5</strong><br>
             ✔️ Производительность: 100% в Speedometer 3.0<br>
             ✔️ WebGPU, WebCodecs, WASM SIMD<br>
             ✔️ Встроенный отладчик и элементы разработчика<br>
             🚀 <em>Скорость загрузки страниц выше Chrome на 18%</em></p>
             <hr style="margin:14px 0;">
-            <p>⚡ Браузер тесно интегрирован с P2P-протоколами и системой.</p>
+            <p><i class="fas fa-bolt"></i> Браузер тесно интегрирован с P2P-протоколами и системой.</p>
         `);
     });
 
@@ -740,7 +735,7 @@
             e.stopPropagation();
             const isoName = btn.getAttribute('data-iso');
             if(isoName) {
-                if(statusDiv) statusDiv.innerHTML = `⏳ Подготовка образа ${isoName}...`;
+                if(statusDiv) statusDiv.innerHTML = `<i class="fas fa-spinner fa-pulse"></i> Подготовка образа ${isoName}...`;
                 const content = `FuturaOS образ: ${isoName}\nPOSIX + P2P магазин + браузер V8.\nКонтрольная сумма: a1f9c8e3d4b2`;
                 const blob = new Blob([content], {type: 'application/octet-stream'});
                 const url = URL.createObjectURL(blob);
@@ -751,7 +746,7 @@
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-                if(statusDiv) statusDiv.innerHTML = `✅ Загрузка ${isoName} началась (демо-файл). Реальный ISO ~2.8 ГБ.`;
+                if(statusDiv) statusDiv.innerHTML = `<i class="fas fa-check-circle"></i> Загрузка ${isoName} началась (демо-файл). Реальный ISO ~2.8 ГБ.`;
                 setTimeout(() => {
                     if(statusDiv) statusDiv.innerHTML = '';
                 }, 3500);
