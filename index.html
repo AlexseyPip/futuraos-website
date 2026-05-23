@@ -17,7 +17,6 @@
             background: #ffffff;
             color: #111827;
             line-height: 1.5;
-            scroll-behavior: smooth;
         }
 
         .container {
@@ -41,6 +40,14 @@
             font-size: 1.9rem;
             font-weight: 700;
             letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
         }
 
         .logo span {
@@ -348,11 +355,17 @@
 
 <div class="container">
     <div class="navbar">
-        <div class="logo">Futura<span>OS</span></div>
+        <div class="logo">
+            <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" fill="#000000"/>
+                <path d="M50 20 L65 45 L55 45 L55 75 L45 75 L45 45 L35 45 Z" fill="#ffffff"/>
+            </svg>
+            <span>Futura<span>OS</span></span>
+        </div>
         <div class="nav-links">
-            <a onclick="scrollToSection('features')">Особенности</a>
-            <a onclick="scrollToSection('gallery')">Галерея</a>
-            <a onclick="scrollToSection('download')">Скачать</a>
+            <a data-scroll="features">Особенности</a>
+            <a data-scroll="gallery">Галерея</a>
+            <a data-scroll="download">Скачать</a>
         </div>
     </div>
 
@@ -403,13 +416,13 @@
         </div>
         <div class="gallery-grid" id="galleryGrid">
             <div class="gallery-card" data-img="0">
-                <div class="gallery-img"></div>
+                <div class="gallery-img">🖥️</div>
             </div>
             <div class="gallery-card" data-img="1">
-                <div class="gallery-img"></div>
+                <div class="gallery-img">📦</div>
             </div>
             <div class="gallery-card" data-img="2">
-                <div class="gallery-img"></div>
+                <div class="gallery-img">🌍</div>
             </div>
         </div>
     </div>
@@ -469,10 +482,38 @@
 </div>
 
 <script>
-    function scrollToSection(id) {
-        const el = document.getElementById(id);
-        if(el) el.scrollIntoView({ behavior: 'smooth' });
+    function smoothScrollTo(targetElement, duration = 700) {
+        const startPosition = window.pageYOffset;
+        const targetPosition = targetElement.getBoundingClientRect().top + startPosition;
+        const distance = targetPosition - startPosition;
+        let startTime = null;
+
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const progress = Math.min(timeElapsed / duration, 1);
+            const ease = progress < 0.5 
+                ? 4 * progress * progress * progress 
+                : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+            window.scrollTo(0, startPosition + distance * ease);
+            if (timeElapsed < duration) {
+                requestAnimationFrame(animation);
+            }
+        }
+
+        requestAnimationFrame(animation);
     }
+
+    document.querySelectorAll('[data-scroll]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('data-scroll');
+            const targetElement = document.getElementById(targetId);
+            if(targetElement) {
+                smoothScrollTo(targetElement, 700);
+            }
+        });
+    });
 
     function showModal(title, bodyHtml) {
         let existing = document.getElementById('futuraModal');
@@ -536,14 +577,14 @@
     }
 
     const images = [
-        { title: 'Рабочий стол FuturaOS', desc: 'Минималистичный интерфейс с поддержкой виджетов, виртуальных рабочих столов и глобального поиска. Тёмная и светлая темы.' },
-        { title: 'P2P App Store', desc: 'Установка приложений через распределённую сеть IPFS. Пример: magnet-ссылка или прямой CID. Без цензуры и единой точки отказа.' },
-        { title: 'FuturaWeb (V8)', desc: 'Встроенный браузер на движке V8. Высокая производительность, инструменты разработчика, поддержка WASM, песочница вкладок.' },
-        { title: 'Терминал + POSIX', desc: 'Полноценная POSIX-среда: bash, coreutils, GCC, Python, make. Всё работает без дополнительной настройки.' },
-        { title: 'Системные настройки', desc: 'Центр управления: пакеты, P2P-режимы, параметры сети, мониторинг ресурсов и кастомизация окружения.' },
-        { title: 'Игровой режим', desc: 'Низкая задержка, оптимизация для Vulkan и DirectX через Proton. Наслаждайтесь играми без компромиссов.' },
-        { title: 'Mesh Network', desc: 'Встроенная поддержка P2P-сетей, обмен файлами без центральных серверов.' },
-        { title: 'Криптография нового поколения', desc: 'Пост-квантовые алгоритмы и полная изоляция процессов.' }
+        { emoji: '🖥️', title: 'Рабочий стол FuturaOS', desc: 'Минималистичный интерфейс с поддержкой виджетов, виртуальных рабочих столов и глобального поиска. Тёмная и светлая темы.' },
+        { emoji: '📦', title: 'P2P App Store', desc: 'Установка приложений через распределённую сеть IPFS. Пример: magnet-ссылка или прямой CID. Без цензуры и единой точки отказа.' },
+        { emoji: '🌍', title: 'FuturaWeb (V8)', desc: 'Встроенный браузер на движке V8. Высокая производительность, инструменты разработчика, поддержка WASM, песочница вкладок.' },
+        { emoji: '💻', title: 'Терминал + POSIX', desc: 'Полноценная POSIX-среда: bash, coreutils, GCC, Python, make. Всё работает без дополнительной настройки.' },
+        { emoji: '🔧', title: 'Системные настройки', desc: 'Центр управления: пакеты, P2P-режимы, параметры сети, мониторинг ресурсов и кастомизация окружения.' },
+        { emoji: '🎮', title: 'Игровой режим', desc: 'Низкая задержка, оптимизация для Vulkan и DirectX через Proton. Наслаждайтесь играми без компромиссов.' },
+        { emoji: '📡', title: 'Mesh Network', desc: 'Встроенная поддержка P2P-сетей, обмен файлами без центральных серверов.' },
+        { emoji: '🔐', title: 'Криптография нового поколения', desc: 'Пост-квантовые алгоритмы и полная изоляция процессов.' }
     ];
 
     let currentStartIndex = 0;
@@ -560,9 +601,10 @@
         const cards = [];
         for(let i = 0; i < itemsPerPage; i++) {
             const imgIndex = (currentStartIndex + i) % totalImages;
+            const img = images[imgIndex];
             cards.push(`
                 <div class="gallery-card" data-img="${imgIndex}">
-                    <div class="gallery-img"></div>
+                    <div class="gallery-img">${img.emoji}</div>
                 </div>
             `);
         }
@@ -571,7 +613,7 @@
             card.addEventListener('click', () => {
                 const idx = parseInt(card.getAttribute('data-img'));
                 const img = images[idx];
-                showModal(img.title, `<p>${img.desc}</p><div style="margin-top:20px; background:#f8fafc; border-radius:20px; padding:24px; text-align:center; font-size:1rem; color:#5c6f87;">Скриншот модуля FuturaOS</div>`);
+                showModal(img.title, `<p>${img.desc}</p><div style="margin-top:20px; background:#f8fafc; border-radius:20px; padding:24px; text-align:center; font-size:3rem;">${img.emoji}</div>`);
             });
         });
     }
@@ -615,25 +657,29 @@
         }, AUTO_INTERVAL);
     }
 
-    prevBtn.addEventListener('click', () => {
-        prevPage();
-        userInteracted = true;
-    });
-    nextBtn.addEventListener('click', () => {
-        nextPage();
-        userInteracted = true;
-    });
+    if(prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+            prevPage();
+            userInteracted = true;
+        });
+        nextBtn.addEventListener('click', () => {
+            nextPage();
+            userInteracted = true;
+        });
+    }
 
-    galleryGrid.addEventListener('wheel', (e) => {
-        if(e.deltaX !== 0 || e.deltaY !== 0) {
+    if(galleryGrid) {
+        galleryGrid.addEventListener('wheel', (e) => {
+            if(e.deltaX !== 0 || e.deltaY !== 0) {
+                userInteracted = true;
+                resetAutoTimer();
+            }
+        });
+        galleryGrid.addEventListener('touchstart', () => {
             userInteracted = true;
             resetAutoTimer();
-        }
-    });
-    galleryGrid.addEventListener('touchstart', () => {
-        userInteracted = true;
-        resetAutoTimer();
-    });
+        });
+    }
 
     renderGallery();
     startAutoTimer();
