@@ -7,7 +7,7 @@
     <meta name="description" content="FuturaOS — современная закрытая операционная система с полной POSIX-совместимостью, децентрализованным P2P магазином приложений и встроенным браузером на движке V8. Производительность, безопасность и экосистема как у Windows.">
     <meta name="keywords" content="FuturaOS, закрытая ОС, операционная система, POSIX, P2P магазин, браузер на V8, децентрализация, IPFS, Windows альтернатива, проприетарная ОС">
     <meta name="author" content="Alexsey_Pip, FuturaOS Team">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="ru">
     <meta name="copyright" content="FuturaOS">
     <meta http-equiv="Content-Language" content="ru">
@@ -107,16 +107,6 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-        }
-
-        .license-badge {
-            background: #fef3c7;
-            color: #92400e;
-            padding: 4px 12px;
-            border-radius: 60px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-left: 12px;
         }
 
         .nav-links {
@@ -413,27 +403,42 @@
 
         .faq-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
             margin-top: 32px;
         }
 
         .faq-item {
             background: #fafcff;
             border-radius: 24px;
-            padding: 24px;
+            padding: 28px;
             border: 1px solid #eef2f8;
+            transition: 0.2s;
+        }
+
+        .faq-item:hover {
+            border-color: #cbd5e1;
+            background: #ffffff;
         }
 
         .faq-item h4 {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-item h4 i {
+            color: #000;
+            font-size: 1.2rem;
         }
 
         .faq-item p {
             color: #4b5563;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         .download-area {
@@ -534,7 +539,6 @@
                 <text x="50" y="72" font-size="52" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#ffffff" text-anchor="middle">F</text>
             </svg>
             <span>Futura<span>OS</span></span>
-            <span class="license-badge"><i class="fas fa-lock"></i> Проприетарная</span>
         </div>
         <div class="nav-links">
             <a data-scroll="features">Особенности</a>
@@ -630,20 +634,28 @@
         <h2 class="section-title">Часто задаваемые вопросы</h2>
         <div class="faq-grid">
             <div class="faq-item">
-                <h4>FuturaOS — это открытая или закрытая ОС?</h4>
-                <p>FuturaOS — полностью проприетарная операционная система, как Windows. Исходный код не公开, но мы предоставляем бесплатные обновления и поддержку.</p>
+                <h4><i class="fas fa-laptop-code"></i> Можно ли запускать Windows-программы?</h4>
+                <p>FuturaOS не эмулирует Windows-приложения напрямую, но благодаря POSIX-совместимости вы можете использовать Wine или аналогичные прослойки для запуска многих Windows-программ.</p>
             </div>
             <div class="faq-item">
-                <h4>Совместима ли с Linux-приложениями?</h4>
-                <p>Да, благодаря полной POSIX-совместимости вы можете запускать приложения, собранные для Linux, без дополнительных прослоек.</p>
+                <h4><i class="fas fa-shield-alt"></i> Насколько безопасна закрытая ОС?</h4>
+                <p>Мы используем собственные механизмы защиты: изоляцию процессов, контроль целостности системы и регулярные аудиты безопасности. Код не公開, что усложняет поиск уязвимостей злоумышленниками.</p>
             </div>
             <div class="faq-item">
-                <h4>Сколько стоит лицензия?</h4>
-                <p>FuturaOS распространяется бесплатно для домашнего использования. Для коммерческого использования приобретается лицензия.</p>
+                <h4><i class="fas fa-sync-alt"></i> Как часто выходят обновления?</h4>
+                <p>Ежемесячно выходят накопительные обновления безопасности, а раз в полгода — крупные функциональные релизы. Обновления распространяются через P2P-сеть.</p>
             </div>
             <div class="faq-item">
-                <h4>Браузер на V8 — это Chrome?</h4>
-                <p>Нет, это собственный браузер на движке Google V8, оптимизированный специально для FuturaOS. Он легче и быстрее.</p>
+                <h4><i class="fas fa-microchip"></i> На каких устройствах работает FuturaOS?</h4>
+                <p>Поддерживаются все современные x86_64 (Intel/AMD) и ARM64 (Raspberry Pi, Apple Silicon) устройства. Минимальные требования: 4 ГБ ОЗУ, 32 ГБ диска.</p>
+            </div>
+            <div class="faq-item">
+                <h4><i class="fas fa-store"></i> Есть ли привычный магазин приложений?</h4>
+                <p>Да, наш P2P-магазин содержит тысячи приложений. Вы можете устанавливать программы в один клик, как в App Store, только без централизации.</p>
+            </div>
+            <div class="faq-item">
+                <h4><i class="fas fa-globe"></i> Браузер FuturaWeb — это полная замена Chrome?</h4>
+                <p>Да, он основан на том же движке V8, поддерживает все современные веб-стандарты, расширения и DevTools. При этом он легче и быстрее благодаря оптимизациям под нашу ОС.</p>
             </div>
         </div>
     </div>
@@ -673,7 +685,7 @@
     </div>
 
     <div class="footer">
-        <p><i class="fas fa-lock"></i> FuturaOS — проприетарная операционная система. Все права защищены.</p>
+        <p>FuturaOS — проприетарная операционная система. Все права защищены.</p>
         <p style="margin-top: 16px;">© 2025-<span id="currentYear"></span> Alexsey_Pip. <i class="fab fa-github"></i> <a href="https://github.com/AlexseyPip" style="color: #6c7a91; text-decoration: none;">GitHub</a></p>
     </div>
 </div>
