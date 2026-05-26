@@ -28,7 +28,7 @@
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="FuturaOS — Закрытая ОС · P2P магазин · Браузер V8">
-    <meta name="twitter:description" content="Современная закрытая операционная система с полной POSIX-совместимостью, децентрализованным магазином приложений и быстрым браузером на V8.">
+    <meta name="twitter:description" content="Современная закрытая операционная система с полной POSIX-совместимостью, децентрализованным P2P магазином и браузером на V8.">
     <meta name="twitter:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%23000000'/%3E%3Ctext x='600' y='315' font-size='72' font-family='Arial' font-weight='bold' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'%3EFuturaOS%3C/text%3E%3Ctext x='600' y='400' font-size='28' font-family='Arial' fill='%23888888' text-anchor='middle'%3EClosed Source · P2P Store · V8 Browser%3C/text%3E%3C/svg%3E">
     
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23000000'/%3E%3Ctext x='50' y='72' font-size='52' font-family='Arial, Helvetica, sans-serif' font-weight='bold' fill='%23ffffff' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
@@ -135,6 +135,48 @@
 
         .nav-links a:hover {
             color: #000;
+        }
+
+        .burger-menu {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #111827;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+        }
+
+        .mobile-nav a {
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: #111827;
+            font-weight: 500;
+        }
+
+        .mobile-nav .close-menu {
+            position: absolute;
+            top: 28px;
+            right: 28px;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
         }
 
         .btn-primary {
@@ -405,22 +447,34 @@
         .download-buttons {
             display: flex;
             justify-content: center;
-            gap: 28px;
+            gap: 32px;
             flex-wrap: wrap;
-            margin: 40px 0 20px;
+            margin: 48px 0 32px;
         }
 
         .download-card {
             background: white;
             border-radius: 24px;
-            padding: 24px 28px;
-            min-width: 200px;
+            padding: 28px 32px;
+            min-width: 220px;
             border: 1px solid #e2e8f0;
+            transition: 0.2s;
+        }
+
+        .download-card:hover {
+            transform: translateY(-4px);
+            border-color: #cbd5e1;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
         }
 
         .download-card h4 {
             font-size: 1.4rem;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+        }
+
+        .download-card p {
+            margin-bottom: 20px;
+            color: #5a6e8a;
         }
 
         .footer {
@@ -444,6 +498,12 @@
             .faq-grid {
                 grid-template-columns: 1fr;
             }
+            .nav-links {
+                display: none;
+            }
+            .burger-menu {
+                display: block;
+            }
         }
 
         @media (max-width: 600px) {
@@ -452,6 +512,13 @@
             }
             .section-title {
                 font-size: 1.7rem;
+            }
+            .download-buttons {
+                gap: 20px;
+            }
+            .download-card {
+                padding: 20px 24px;
+                min-width: 180px;
             }
         }
     </style>
@@ -467,14 +534,25 @@
                 <text x="50" y="72" font-size="52" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#ffffff" text-anchor="middle">F</text>
             </svg>
             <span>Futura<span>OS</span></span>
+            <span class="license-badge"><i class="fas fa-lock"></i> Проприетарная</span>
         </div>
         <div class="nav-links">
             <a data-scroll="features">Особенности</a>
             <a data-scroll="gallery">Галерея</a>
             <a data-scroll="download">Скачать</a>
         </div>
+        <button class="burger-menu" id="burgerBtn"><i class="fas fa-bars"></i></button>
     </div>
+</div>
 
+<div class="mobile-nav" id="mobileNav">
+    <button class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></button>
+    <a data-scroll="features" class="mobile-link">Особенности</a>
+    <a data-scroll="gallery" class="mobile-link">Галерея</a>
+    <a data-scroll="download" class="mobile-link">Скачать</a>
+</div>
+
+<div class="container">
     <div class="hero">
         <div>
             <h1>Закрытая ОС. POSIX. P2P магазин. V8.</h1>
@@ -553,7 +631,7 @@
         <div class="faq-grid">
             <div class="faq-item">
                 <h4>FuturaOS — это открытая или закрытая ОС?</h4>
-                <p>FuturaOS — полностью проприетарная операционная система, как Windows. Исходный код закрыт, но мы предоставляем бесплатные обновления и поддержку.</p>
+                <p>FuturaOS — полностью проприетарная операционная система, как Windows. Исходный код не公开, но мы предоставляем бесплатные обновления и поддержку.</p>
             </div>
             <div class="faq-item">
                 <h4>Совместима ли с Linux-приложениями?</h4>
@@ -576,17 +654,17 @@
         <div class="download-buttons">
             <div class="download-card">
                 <h4><i class="fas fa-desktop"></i> Desktop AMD64</h4>
-                <p style="font-size:0.8rem;">Стабильная версия 2.5 LTS</p> <br>
+                <p>Стабильная версия 2.5 LTS</p>
                 <button class="btn-primary download-iso" data-iso="FuturaOS_2.5_amd64.iso"><i class="fas fa-download"></i> Скачать ISO</button>
             </div>
             <div class="download-card">
                 <h4><i class="fas fa-microchip"></i> ARM64 (Preview)</h4>
-                <p>Raspberry Pi / Apple Silicon</p><br>
+                <p>Raspberry Pi / Apple Silicon</p>
                 <button class="btn-primary download-iso" data-iso="FuturaOS_2.5_arm64.iso"><i class="fas fa-download"></i> Скачать IMG</button>
             </div>
             <div class="download-card">
-                <h4><i class="fas fa-usb"></i> Live USB</h4>
-                <p>Загрузка без установки</p><br>
+                <h4><i class="fas fa-rocket"></i> Live USB</h4>
+                <p>Загрузка без установки</p>
                 <button class="btn-primary download-iso" data-iso="FuturaOS_live_2.5.iso"><i class="fas fa-download"></i> Live ISO</button>
             </div>
         </div>
@@ -595,12 +673,40 @@
     </div>
 
     <div class="footer">
-        <p>FuturaOS — проприетарная операционная система. Все права защищены.</p>
-        <p style="margin-top: 16px;">© 2025 Alexsey_Pip. <i class="fab fa-github"></i> <a href="https://github.com/AlexseyPip" style="color: #6c7a91; text-decoration: none;">GitHub</a></p>
+        <p><i class="fas fa-lock"></i> FuturaOS — проприетарная операционная система. Все права защищены.</p>
+        <p style="margin-top: 16px;">© 2025-<span id="currentYear"></span> Alexsey_Pip. <i class="fab fa-github"></i> <a href="https://github.com/AlexseyPip" style="color: #6c7a91; text-decoration: none;">GitHub</a></p>
     </div>
 </div>
 
 <script>
+    document.getElementById('currentYear').innerText = new Date().getFullYear();
+
+    const mobileNav = document.getElementById('mobileNav');
+    const burgerBtn = document.getElementById('burgerBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+    burgerBtn.addEventListener('click', () => {
+        mobileNav.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    });
+
+    closeMenuBtn.addEventListener('click', () => {
+        mobileNav.style.display = 'none';
+        document.body.style.overflow = '';
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            mobileNav.style.display = 'none';
+            document.body.style.overflow = '';
+            const targetId = link.getAttribute('data-scroll');
+            const targetElement = document.getElementById(targetId);
+            if(targetElement) {
+                smoothScrollTo(targetElement, 700);
+            }
+        });
+    });
+
     function smoothScrollTo(targetElement, duration = 700) {
         const startPosition = window.pageYOffset;
         const targetPosition = targetElement.getBoundingClientRect().top + startPosition;
@@ -624,14 +730,16 @@
     }
 
     document.querySelectorAll('[data-scroll]').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('data-scroll');
-            const targetElement = document.getElementById(targetId);
-            if(targetElement) {
-                smoothScrollTo(targetElement, 700);
-            }
-        });
+        if(!link.classList.contains('mobile-link')) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-scroll');
+                const targetElement = document.getElementById(targetId);
+                if(targetElement) {
+                    smoothScrollTo(targetElement, 700);
+                }
+            });
+        }
     });
 
     function showModal(title, bodyHtml) {
