@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
   <url>
     <loc>https://futuraos.ru/</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/"/>
@@ -13,8 +14,114 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://futuraos.ru/en/"/>
     <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://futuraos.ru/o-sisteme/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/o-sisteme/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://futuraos.ru/en/features/"/>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://futuraos.ru/en/features/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/o-sisteme/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://futuraos.ru/en/features/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://futuraos.ru/skachat/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/skachat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://futuraos.ru/en/download/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://futuraos.ru/en/download/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/skachat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://futuraos.ru/en/download/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://futuraos.ru/dokumentatsiya/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/dokumentatsiya/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://futuraos.ru/en/docs/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://futuraos.ru/en/docs/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/dokumentatsiya/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://futuraos.ru/en/docs/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://futuraos.ru/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://futuraos.ru/en/blog/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://futuraos.ru/en/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://futuraos.ru/en/blog/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://futuraos.ru/blog/vypusk-2-5-lts/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/blog/vypusk-2-5-lts/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://futuraos.ru/en/blog/release-2-5-lts/"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://futuraos.ru/en/blog/release-2-5-lts/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/blog/vypusk-2-5-lts/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://futuraos.ru/en/blog/release-2-5-lts/"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://futuraos.ru/blog/arm64-preview/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/blog/arm64-preview/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://futuraos.ru/en/blog/arm64-preview/"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://futuraos.ru/en/blog/arm64-preview/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/blog/arm64-preview/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://futuraos.ru/en/blog/arm64-preview/"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://futuraos.ru/blog/p2p-2000-prilozhenij/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/blog/p2p-2000-prilozhenij/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://futuraos.ru/en/blog/p2p-2000-apps/"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://futuraos.ru/en/blog/p2p-2000-apps/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://futuraos.ru/blog/p2p-2000-prilozhenij/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://futuraos.ru/en/blog/p2p-2000-apps/"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <url>
     <loc>https://futuraos.ru/os-demo/</loc>
     <changefreq>monthly</changefreq>

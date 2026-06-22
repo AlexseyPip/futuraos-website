@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О системе FuturaOS — особенности, POSIX, P2P, FuturaWeb</title>
+    <meta name="description" content="Узнайте об архитектуре FuturaOS: POSIX-совместимость, децентрализованный P2P магазин, браузер FuturaWeb на V8, безопасность и игровой режим.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://futuraos.ru/o-sisteme/">
+    <link rel="alternate" hreflang="ru" href="https://futuraos.ru/o-sisteme/">
+    <link rel="alternate" hreflang="en" href="https://futuraos.ru/en/features/">
+    <meta property="og:title" content="О системе FuturaOS">
+    <meta property="og:url" content="https://futuraos.ru/o-sisteme/">
+    <meta property="og:image" content="https://futuraos.ru/img/logo.png">
+    <link rel="icon" href="/img/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+
+<header class="container">
+    <nav class="navbar">
+        <a href="/" class="logo"><img src="/img/logo.png" width="38" height="38" alt="FuturaOS"><span>Futura<span>OS</span></span></a>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="/o-sisteme/" class="active">О системе</a>
+                <a href="/skachat/">Скачать</a>
+                <a href="/dokumentatsiya/">Документация</a>
+                <a href="/blog/">Блог</a>
+                <a href="/os-demo/">Демо</a>
+            </div>
+            <div class="lang-switch"><a href="/o-sisteme/" class="active">RU</a><a href="/en/features/">EN</a></div>
+            <button class="burger-menu" id="burgerBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+</header>
+
+<nav class="mobile-nav" id="mobileNav">
+    <button class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></button>
+    <a href="/o-sisteme/">О системе</a>
+    <a href="/skachat/">Скачать</a>
+    <a href="/dokumentatsiya/">Документация</a>
+    <a href="/blog/">Блог</a>
+    <a href="/os-demo/">Демо</a>
+    <div class="lang-switch"><a href="/o-sisteme/" class="active">RU</a><a href="/en/features/">EN</a></div>
+</nav>
+
+<main class="container">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="/">Главная</a> / О системе</nav>
+    <header class="page-header">
+        <h1>О системе FuturaOS</h1>
+        <p>Современная проприетарная операционная система, построенная на принципах производительности, безопасности и децентрализации.</p>
+    </header>
+
+    <section class="section" style="margin-top:0">
+        <div class="grid-3">
+            <article class="card">
+                <div class="card-icon"><i class="fas fa-terminal"></i></div>
+                <h3>POSIX-совместимость</h3>
+                <p>Полная поддержка POSIX.1-2024. Bash, coreutils, GCC, Python — без изменений.</p>
+            </article>
+            <article class="card">
+                <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+                <h3>P2P магазин</h3>
+                <p>Установка через IPFS и magnet-ссылки. Приложения распространяются между пользователями.</p>
+            </article>
+            <article class="card">
+                <div class="card-icon"><i class="fas fa-globe"></i></div>
+                <h3>FuturaWeb на V8</h3>
+                <p>Встроенный браузер с движком V8, WebGPU, WASM и песочницей для каждой вкладки.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="gallery-header">
+            <h2>Галерея интерфейса</h2>
+            <div class="gallery-controls">
+                <button class="gallery-nav-btn" id="galleryPrev"><i class="fas fa-chevron-left"></i></button>
+                <button class="gallery-nav-btn" id="galleryNext"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <section class="dual-panel">
+        <article class="panel">
+            <h3><i class="fas fa-store" style="margin-right:12px"></i> P2P магазин приложений</h3>
+            <p>Децентрализованный каталог через IPFS и DHT. Каждый пользователь — узел сети.</p>
+            <ul class="feature-list">
+                <li><i class="fas fa-link"></i> Установка по magnet-ссылке или CID</li>
+                <li><i class="fas fa-bolt"></i> Дельта-обновления без перезагрузки</li>
+                <li><i class="fas fa-shield-alt"></i> Верификация цифровыми подписями</li>
+                <li><i class="fas fa-chart-line"></i> Рейтинг на основе репутации пиров</li>
+            </ul>
+            <button class="btn-outline" id="openP2PModal"><i class="fas fa-store"></i> Демо магазина</button>
+        </article>
+        <article class="panel">
+            <h3><i class="fab fa-chrome" style="margin-right:12px"></i> FuturaWeb</h3>
+            <p>Браузер на движке V8 от Google с JIT-компиляцией и полной поддержкой веб-стандартов.</p>
+            <ul class="feature-list">
+                <li><i class="fas fa-tachometer-alt"></i> JIT-компиляция и оптимизация</li>
+                <li><i class="fas fa-lock"></i> Песочница для каждой вкладки</li>
+                <li><i class="fas fa-puzzle-piece"></i> Расширения на WebAssembly</li>
+                <li><i class="fas fa-mobile-alt"></i> Режим адаптивной разработки</li>
+            </ul>
+            <button class="btn-outline" id="openBrowserModal"><i class="fas fa-globe"></i> Демо браузера</button>
+        </article>
+    </section>
+
+    <section class="faq-section">
+        <h2 class="section-title">Часто задаваемые вопросы</h2>
+        <div class="faq-grid">
+            <article class="faq-item">
+                <h4><i class="fas fa-laptop-code"></i> Windows-программы?</h4>
+                <p>Через Wine и POSIX-прослойки можно запускать многие Windows-приложения.</p>
+            </article>
+            <article class="faq-item">
+                <h4><i class="fas fa-shield-alt"></i> Безопасность</h4>
+                <p>Изоляция процессов, контроль целостности и регулярные аудиты безопасности.</p>
+            </article>
+            <article class="faq-item">
+                <h4><i class="fas fa-sync-alt"></i> Обновления</h4>
+                <p>Ежемесячные патчи безопасности и крупные релизы раз в полгода через P2P.</p>
+            </article>
+            <article class="faq-item">
+                <h4><i class="fas fa-microchip"></i> Устройства</h4>
+                <p>x86_64 и ARM64. Минимум: 4 ГБ ОЗУ, 32 ГБ диска.</p>
+            </article>
+            <article class="faq-item">
+                <h4><i class="fas fa-store"></i> Магазин приложений</h4>
+                <p>2000+ пакетов в P2P-каталоге. Установка в один клик.</p>
+            </article>
+            <article class="faq-item">
+                <h4><i class="fas fa-gamepad"></i> Игры</h4>
+                <p>Игровой режим с оптимизацией Vulkan и DirectX через Proton.</p>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer class="container footer">
+    <nav class="footer-nav"><a href="/o-sisteme/">О системе</a><a href="/skachat/">Скачать</a><a href="/dokumentatsiya/">Документация</a><a href="/blog/">Блог</a></nav>
+    <p>© 2025–<span id="currentYear"></span> FuturaOS</p>
+</footer>
+
+<script src="/assets/js/i18n.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/features.js" defer></script>
+</body>
+</html>

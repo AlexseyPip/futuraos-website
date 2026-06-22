@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог FuturaOS — новости, релизы, обновления</title>
+    <meta name="description" content="Новости FuturaOS: релизы, обновления безопасности, анонсы функций и развитие P2P экосистемы.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://futuraos.ru/blog/">
+    <link rel="alternate" hreflang="ru" href="https://futuraos.ru/blog/">
+    <link rel="alternate" hreflang="en" href="https://futuraos.ru/en/blog/">
+    <link rel="icon" href="/img/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+
+<header class="container">
+    <nav class="navbar">
+        <a href="/" class="logo"><img src="/img/logo.png" width="38" height="38" alt="FuturaOS"><span>Futura<span>OS</span></span></a>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="/o-sisteme/">О системе</a>
+                <a href="/skachat/">Скачать</a>
+                <a href="/dokumentatsiya/">Документация</a>
+                <a href="/blog/" class="active">Блог</a>
+                <a href="/os-demo/">Демо</a>
+            </div>
+            <div class="lang-switch"><a href="/blog/" class="active">RU</a><a href="/en/blog/">EN</a></div>
+            <button class="burger-menu" id="burgerBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+</header>
+
+<nav class="mobile-nav" id="mobileNav">
+    <button class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></button>
+    <a href="/o-sisteme/">О системе</a>
+    <a href="/skachat/">Скачать</a>
+    <a href="/dokumentatsiya/">Документация</a>
+    <a href="/blog/">Блог</a>
+    <a href="/os-demo/">Демо</a>
+    <div class="lang-switch"><a href="/blog/" class="active">RU</a><a href="/en/blog/">EN</a></div>
+</nav>
+
+<main class="container">
+    <nav class="breadcrumbs"><a href="/">Главная</a> / Блог</nav>
+    <header class="page-header">
+        <h1>Блог и новости</h1>
+        <p>Анонсы релизов, обновления безопасности и новости экосистемы FuturaOS.</p>
+    </header>
+
+    <div class="blog-grid">
+        <a href="/blog/vypusk-2-5-lts/" class="blog-card">
+            <div class="blog-card-image"><i class="fas fa-rocket"></i></div>
+            <div class="blog-card-body">
+                <div class="blog-card-meta">15 мая 2025 · Релиз</div>
+                <h3>FuturaOS 2.5 LTS — стабильный релиз</h3>
+                <p>Долгосрочная поддержка до 2028 года, обновлённый P2P магазин и улучшения FuturaWeb на V8 12.5.</p>
+                <span class="read-more">Читать →</span>
+            </div>
+        </a>
+        <a href="/blog/arm64-preview/" class="blog-card">
+            <div class="blog-card-image"><i class="fas fa-microchip"></i></div>
+            <div class="blog-card-body">
+                <div class="blog-card-meta">3 апреля 2025 · Анонс</div>
+                <h3>ARM64 Preview для Raspberry Pi</h3>
+                <p>Первая публичная сборка для ARM64-устройств: Raspberry Pi 4/5 и Apple Silicon через виртуализацию.</p>
+                <span class="read-more">Читать →</span>
+            </div>
+        </a>
+        <a href="/blog/p2p-2000-prilozhenij/" class="blog-card">
+            <div class="blog-card-image"><i class="fas fa-store"></i></div>
+            <div class="blog-card-body">
+                <div class="blog-card-meta">20 марта 2025 · Экосистема</div>
+                <h3>P2P магазин: 2000+ приложений</h3>
+                <p>Каталог децентрализованных приложений достиг важной вехи. Новые категории: игры, мультимедиа, разработка.</p>
+                <span class="read-more">Читать →</span>
+            </div>
+        </a>
+    </div>
+</main>
+
+<footer class="container footer">
+    <nav class="footer-nav"><a href="/o-sisteme/">О системе</a><a href="/skachat/">Скачать</a><a href="/dokumentatsiya/">Документация</a><a href="/blog/">Блог</a></nav>
+    <p>© 2025–<span id="currentYear"></span> FuturaOS</p>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

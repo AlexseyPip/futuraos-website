@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документация FuturaOS — установка, P2P, терминал</title>
+    <meta name="description" content="Официальная документация FuturaOS: установка, настройка P2P магазина, работа с терминалом, пакетный менеджер и лицензия.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://futuraos.ru/dokumentatsiya/">
+    <link rel="alternate" hreflang="ru" href="https://futuraos.ru/dokumentatsiya/">
+    <link rel="alternate" hreflang="en" href="https://futuraos.ru/en/docs/">
+    <link rel="icon" href="/img/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+
+<header class="container">
+    <nav class="navbar">
+        <a href="/" class="logo"><img src="/img/logo.png" width="38" height="38" alt="FuturaOS"><span>Futura<span>OS</span></span></a>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="/o-sisteme/">О системе</a>
+                <a href="/skachat/">Скачать</a>
+                <a href="/dokumentatsiya/" class="active">Документация</a>
+                <a href="/blog/">Блог</a>
+                <a href="/os-demo/">Демо</a>
+            </div>
+            <div class="lang-switch"><a href="/dokumentatsiya/" class="active">RU</a><a href="/en/docs/">EN</a></div>
+            <button class="burger-menu" id="burgerBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+</header>
+
+<nav class="mobile-nav" id="mobileNav">
+    <button class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></button>
+    <a href="/o-sisteme/">О системе</a>
+    <a href="/skachat/">Скачать</a>
+    <a href="/dokumentatsiya/">Документация</a>
+    <a href="/blog/">Блог</a>
+    <a href="/os-demo/">Демо</a>
+    <div class="lang-switch"><a href="/dokumentatsiya/" class="active">RU</a><a href="/en/docs/">EN</a></div>
+</nav>
+
+<main class="container">
+    <nav class="breadcrumbs"><a href="/">Главная</a> / Документация</nav>
+    <header class="page-header">
+        <h1>Документация</h1>
+        <p>Руководства по установке, настройке и использованию FuturaOS.</p>
+    </header>
+
+    <div class="docs-layout">
+        <aside class="docs-sidebar">
+            <nav aria-label="Содержание">
+                <a href="#ustanovka" class="active">Установка</a>
+                <a href="#p2p">P2P магазин</a>
+                <a href="#terminal">Терминал</a>
+                <a href="#pakety">Пакетный менеджер</a>
+                <a href="#bezopasnost">Безопасность</a>
+                <a href="#licenziya">Лицензия</a>
+            </nav>
+        </aside>
+        <article class="docs-content">
+            <h2 id="ustanovka">Установка</h2>
+            <p>Для установки FuturaOS скачайте ISO-образ с <a href="/skachat/">страницы загрузки</a> и запишите его на USB-накопитель объёмом не менее 8 ГБ.</p>
+            <p>Команда для записи через терминал Linux/macOS:</p>
+            <p><code>dd if=FuturaOS_2.5_amd64.iso of=/dev/sdX bs=4M status=progress</code></p>
+            <p>Замените <code>/dev/sdX</code> на ваш USB-накопитель. После записи перезагрузите компьютер и выберите загрузку с USB.</p>
+
+            <h2 id="p2p">P2P магазин приложений</h2>
+            <p>P2P магазин использует IPFS и DHT для распространения приложений. Для установки пакета:</p>
+            <ol>
+                <li>Откройте P2P App Store из меню приложений</li>
+                <li>Найдите приложение или вставьте magnet-ссылку / CID</li>
+                <li>Нажмите «Установить» — клиент загрузит и верифицирует пакет</li>
+            </ol>
+            <p>Пример magnet-ссылки: <code>magnet:?xt=urn:btih:futura_editor_latest</code></p>
+
+            <h2 id="terminal">Терминал</h2>
+            <p>FuturaOS поставляется с bash 5.2 и полным набором POSIX-утилит. Стандартные команды Linux работают без изменений:</p>
+            <ul>
+                <li><code>ls</code>, <code>cd</code>, <code>grep</code>, <code>find</code> — файловые операции</li>
+                <li><code>gcc</code>, <code>make</code>, <code>python3</code> — разработка</li>
+                <li><code>systemctl</code> — управление службами</li>
+            </ul>
+
+            <h2 id="pakety">Пакетный менеджер</h2>
+            <p>Команда <code>futura-pkg</code> управляет пакетами из P2P-каталога:</p>
+            <ul>
+                <li><code>futura-pkg install &lt;имя&gt;</code> — установка</li>
+                <li><code>futura-pkg remove &lt;имя&gt;</code> — удаление</li>
+                <li><code>futura-pkg update</code> — обновление всех пакетов</li>
+                <li><code>futura-pkg search &lt;запрос&gt;</code> — поиск</li>
+            </ul>
+
+            <h2 id="bezopasnost">Безопасность</h2>
+            <p>Все пакеты подписываются цифровыми ключами разработчиков. Система проверяет подпись перед установкой. Рекомендуется включить автоматические обновления безопасности в Центре управления.</p>
+
+            <h2 id="licenziya">Лицензия</h2>
+            <p>FuturaOS — проприетарное программное обеспечение. Бесплатно для домашнего использования. Коммерческое использование требует отдельной лицензии. Подробности — на futuraos.ru.</p>
+        </article>
+    </div>
+</main>
+
+<footer class="container footer">
+    <nav class="footer-nav"><a href="/o-sisteme/">О системе</a><a href="/skachat/">Скачать</a><a href="/dokumentatsiya/">Документация</a><a href="/blog/">Блог</a></nav>
+    <p>© 2025–<span id="currentYear"></span> FuturaOS</p>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>
