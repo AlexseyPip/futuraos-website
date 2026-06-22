@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FuturaOS — Демо рабочего стола</title>
+    <meta name="description" content="Интерактивное демо рабочего стола FuturaOS в браузере: панель задач, иконки, окна, терминал.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://futuraos.ru/os-demo/">
+    <link rel="stylesheet" href="css/os.css">
+</head>
+<body>
+    <a href="/" class="back-link" id="backLink">← На сайт</a>
+
+    <div class="os-desktop" id="desktop">
+        <div class="desktop-icons" id="desktopIcons"></div>
+    </div>
+
+    <div class="os-cursor" id="cursor"></div>
+
+    <div class="start-menu" id="startMenu">
+        <div class="start-menu-header">
+            <h3>FuturaOS 2.5</h3>
+            <p id="welcomeText">Добро пожаловать, Пользователь</p>
+        </div>
+        <div class="start-menu-items" id="startMenuItems"></div>
+        <div class="start-menu-footer">
+            <a href="/"><img src="../img/os-demo/icons/16/home.png" width="16" height="16" alt=""> На сайт</a>
+            <button type="button" onclick="window.location.href='/'"><img src="../img/os-demo/icons/panel-shutdown.png" width="16" height="16" alt=""> Выход</button>
+        </div>
+    </div>
+
+    <div class="taskbar">
+        <button class="start-btn" id="startBtn" aria-label="Меню Пуск">
+            <img src="../img/logo.png" alt="FuturaOS">
+        </button>
+        <div class="taskbar-apps" id="taskbarApps"></div>
+        <div class="taskbar-tray">
+            <img class="tray-icon" src="../img/os-demo/icons/24/net-active.png" alt="Сеть">
+            <img class="tray-icon" src="../img/os-demo/icons/24/volume-medium.png" alt="Громкость">
+            <div class="taskbar-clock" id="clock"></div>
+        </div>
+    </div>
+
+    <script src="js/os.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FuturaOS — ОС нового поколения | POSIX, P2P магазин, браузер V8</title>
+    <meta name="description" content="FuturaOS — современная проприетарная операционная система с полной POSIX-совместимостью, децентрализованным P2P магазином приложений и встроенным браузером на движке V8.">
+    <meta name="keywords" content="FuturaOS, операционная система, POSIX, P2P магазин, браузер V8, IPFS, Windows альтернатива">
+    <meta name="author" content="Alexsey_Pip, FuturaOS Team">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#000000">
+
+    <link rel="canonical" href="https://futuraos.ru/">
+    <link rel="alternate" hreflang="ru" href="https://futuraos.ru/">
+    <link rel="alternate" hreflang="en" href="https://futuraos.ru/en/">
+    <link rel="alternate" hreflang="x-default" href="https://futuraos.ru/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://futuraos.ru/">
+    <meta property="og:title" content="FuturaOS — Закрытая ОС · P2P магазин · Браузер V8">
+    <meta property="og:description" content="Современная проприетарная ОС с POSIX, децентрализованным магазином приложений и быстрым браузером на V8.">
+    <meta property="og:image" content="https://futuraos.ru/img/logo.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:site_name" content="FuturaOS">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FuturaOS — Закрытая ОС · P2P магазин · Браузер V8">
+    <meta name="twitter:description" content="Современная проприетарная ОС с POSIX, P2P магазином и браузером V8.">
+    <meta name="twitter:image" content="https://futuraos.ru/img/logo.png">
+
+    <link rel="icon" href="/img/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="/img/logo.png">
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "FuturaOS",
+          "url": "https://futuraos.ru/",
+          "inLanguage": ["ru", "en"],
+          "description": "Операционная система нового поколения"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "FuturaOS",
+          "description": "Проприетарная операционная система с POSIX, P2P магазином и браузером V8",
+          "operatingSystem": "x86_64, ARM64",
+          "applicationCategory": "OperatingSystem",
+          "downloadUrl": "https://futuraos.ru/#download",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Alexsey_Pip",
+            "url": "https://github.com/AlexseyPip"
+          }
+        },
+        {
+          "@type": "Organization",
+          "name": "FuturaOS",
+          "url": "https://futuraos.ru/",
+          "logo": "https://futuraos.ru/img/logo.png"
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+<header class="container">
+    <nav class="navbar" aria-label="Основная навигация">
+        <a href="/" class="logo" aria-label="FuturaOS — на главную">
+            <img src="/img/logo.png" width="38" height="38" alt="FuturaOS Logo">
+            <span>Futura<span>OS</span></span>
+        </a>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a data-scroll="features">Особенности</a>
+                <a data-scroll="gallery">Галерея</a>
+                <a href="/os-demo/">Демо ОС</a>
+                <a data-scroll="download">Скачать</a>
+            </div>
+            <div class="lang-switch" role="navigation" aria-label="Выбор языка">
+                <a href="/" class="active" hreflang="ru">RU</a>
+                <a href="/en/" hreflang="en">EN</a>
+            </div>
+            <button class="burger-menu" id="burgerBtn" aria-label="Открыть меню"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Мобильное меню">
+    <button class="close-menu" id="closeMenuBtn" aria-label="Закрыть меню"><i class="fas fa-times"></i></button>
+    <a data-scroll="features" class="mobile-link">Особенности</a>
+    <a data-scroll="gallery" class="mobile-link">Галерея</a>
+    <a href="/os-demo/" class="mobile-link">Демо ОС</a>
+    <a data-scroll="download" class="mobile-link">Скачать</a>
+    <div class="lang-switch">
+        <a href="/" class="active">RU</a>
+        <a href="/en/">EN</a>
+    </div>
+</nav>
+
+<main class="container">
+    <section class="hero" aria-labelledby="hero-title">
+        <div>
+            <h1 id="hero-title">Будущее уже здесь</h1>
+            <p>FuturaOS — современная проприетарная операционная система, сочетающая лучшие идеи Windows и UNIX. Полная совместимость с POSIX, децентрализованный P2P магазин и быстрый браузер на V8.</p>
+            <div class="hero-actions">
+                <button class="btn-primary" id="heroDownload"><i class="fas fa-download" style="margin-right: 8px;"></i>Скачать ISO</button>
+                <button class="btn-outline" id="heroP2P"><i class="fas fa-store" style="margin-right: 8px;"></i>Открыть P2P магазин</button>
+                <a href="/os-demo/" class="btn-outline"><i class="fas fa-desktop" style="margin-right: 8px;"></i>Попробовать демо</a>
+            </div>
+        </div>
+        <div class="mockup">
+            <div class="mockup-screen">
+                <a href="/os-demo/" aria-label="Открыть демо рабочего стола FuturaOS">
+                    <img src="/img/os-demo/backgrounds/whiteeye.jpg" width="600" height="375" alt="Рабочий стол FuturaOS — современный интерфейс">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="os-demo-banner" aria-labelledby="demo-title">
+        <div>
+            <h2 id="demo-title">Попробуйте FuturaOS прямо в браузере</h2>
+            <p>Интерактивное демо рабочего стола: панель задач, иконки, окна, терминал и калькулятор — без установки.</p>
+        </div>
+        <a href="/os-demo/" class="btn-primary"><i class="fas fa-play" style="margin-right: 8px;"></i>Запустить демо</a>
+    </section>
+
+    <section id="features" class="section" aria-labelledby="features-title">
+        <h2 id="features-title" class="section-title">Ключевые особенности</h2>
+        <div class="grid-3">
+            <article class="card">
+                <div class="card-icon"><i class="fas fa-terminal" aria-hidden="true"></i></div>
+                <h3>POSIX-совместимость</h3>
+                <p>Полная поддержка POSIX.1-2024. Запускайте bash, coreutils, GCC, Python без изменений — как в Linux, но в закрытой экосистеме.</p>
+            </article>
+            <article class="card">
+                <div class="card-icon"><i class="fas fa-network-wired" aria-hidden="true"></i></div>
+                <h3>P2P магазин приложений</h3>
+                <p>Децентрализованная установка через IPFS и magnet-ссылки. Приложения распространяются между пользователями.</p>
+            </article>
+            <article class="card">
+                <div class="card-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
+                <h3>Браузер на V8</h3>
+                <p>Встроенный браузер FuturaWeb с движком V8. Быстрее Chrome, полная поддержка современных веб-стандартов.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section" aria-labelledby="gallery-title">
+        <div class="gallery-header">
+            <h2 id="gallery-title">Галерея</h2>
+            <div class="gallery-controls">
+                <button class="gallery-nav-btn" id="galleryPrev" aria-label="Предыдущий слайд"><i class="fas fa-chevron-left"></i></button>
+                <button class="gallery-nav-btn" id="galleryNext" aria-label="Следующий слайд"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        <div class="gallery-grid" id="galleryGrid" role="list"></div>
+    </section>
+
+    <section class="dual-panel" aria-label="P2P магазин и браузер">
+        <article class="panel">
+            <h3><i class="fas fa-store" style="margin-right: 12px;" aria-hidden="true"></i> P2P магазин приложений</h3>
+            <p>Полностью децентрализованный каталог. Приложения распространяются через IPFS и DHT. Каждый пользователь — узел сети.</p>
+            <ul class="feature-list">
+                <li><i class="fas fa-link" aria-hidden="true"></i> Установка по magnet-ссылке или CID</li>
+                <li><i class="fas fa-bolt" aria-hidden="true"></i> Дельта-обновления без перезагрузки</li>
+                <li><i class="fas fa-shield-alt" aria-hidden="true"></i> Верификация цифровыми подписями</li>
+                <li><i class="fas fa-chart-line" aria-hidden="true"></i> Рейтинг на основе репутации пиров</li>
+            </ul>
+            <button class="btn-outline" id="openP2PModal"><i class="fas fa-store"></i> Открыть магазин (демо)</button>
+        </article>
+        <article class="panel">
+            <h3><i class="fab fa-chrome" style="margin-right: 12px;" aria-hidden="true"></i> FuturaWeb на V8</h3>
+            <p>Собственный браузер с движком V8 от Google. Высокая скорость и полная совместимость с веб-стандартами.</p>
+            <ul class="feature-list">
+                <li><i class="fas fa-tachometer-alt" aria-hidden="true"></i> JIT-компиляция и оптимизация</li>
+                <li><i class="fas fa-lock" aria-hidden="true"></i> Песочница для каждой вкладки</li>
+                <li><i class="fas fa-puzzle-piece" aria-hidden="true"></i> Расширения на WebAssembly</li>
+                <li><i class="fas fa-mobile-alt" aria-hidden="true"></i> Режим адаптивной разработки</li>
+            </ul>
+            <button class="btn-outline" id="openBrowserModal"><i class="fas fa-globe"></i> Запустить браузер (демо)</button>
+        </article>
+    </section>
+
+    <section class="faq-section" aria-labelledby="faq-title">
+        <h2 id="faq-title" class="section-title">Часто задаваемые вопросы</h2>
+        <div class="faq-grid">
+            <article class="faq-item">
+                <h4><i class="fas fa-laptop-code" aria-hidden="true"></i> Можно ли запускать Windows-программы?</h4>
+                <p>FuturaOS не эмулирует Windows-приложения напрямую, но благодаря POSIX-совместимости вы можете использовать Wine или аналогичные прослойки для запуска многих Windows-программ.</p>
+            </article>
+            <article class="faq-item">
+                <h4><i class="fas fa-shield-alt" aria-hidden="true"></i> Насколько безопасна закрытая ОС?</h4>
+                <p>Мы используем собственные механизмы защиты: изоляцию процессов, контроль целостности системы и регулярные аудиты безопасности.</p>
+            </article>
+            <article class="faq-item">
+                <h4><i class="fas fa-sync-alt" aria-hidden="true"></i> Как часто выходят обновления?</h4>
+                <p>Ежемесячно выходят накопительные обновления безопасности, а раз в полгода — крупные функциональные релизы. Обновления распространяются через P2P-сеть.</p>
+            </article>
+            <article class="faq-item">
+                <h4><i class="fas fa-microchip" aria-hidden="true"></i> На каких устройствах работает FuturaOS?</h4>
+                <p>Поддерживаются все современные x86_64 (Intel/AMD) и ARM64 (Raspberry Pi, Apple Silicon) устройства. Минимальные требования: 4 ГБ ОЗУ, 32 ГБ диска.</p>
+            </article>
+            <article class="faq-item">
+                <h4><i class="fas fa-store" aria-hidden="true"></i> Есть ли привычный магазин приложений?</h4>
+                <p>Да, наш P2P-магазин содержит тысячи приложений. Вы можете устанавливать программы в один клик, как в App Store, только без централизации.</p>
+            </article>
+            <article class="faq-item">
+                <h4><i class="fas fa-globe" aria-hidden="true"></i> Браузер FuturaWeb — это полная замена Chrome?</h4>
+                <p>Да, он основан на том же движке V8, поддерживает все современные веб-стандарты, расширения и DevTools. При этом он легче и быстрее благодаря оптимизациям под нашу ОС.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="download" class="download-area" aria-labelledby="download-title">
+        <h2 id="download-title" style="font-size: 1.9rem; margin-bottom: 12px;"><i class="fas fa-download" aria-hidden="true"></i> Скачать FuturaOS</h2>
+        <p>Выберите образ для вашей архитектуры. Бесплатно для домашнего использования.</p>
+        <div class="download-buttons">
+            <div class="download-card">
+                <h4><i class="fas fa-desktop" aria-hidden="true"></i> Desktop AMD64</h4>
+                <p>Стабильная версия 2.5 LTS</p>
+                <button class="btn-primary download-iso" data-iso="FuturaOS_2.5_amd64.iso"><i class="fas fa-download"></i> Скачать ISO</button>
+            </div>
+            <div class="download-card">
+                <h4><i class="fas fa-microchip" aria-hidden="true"></i> ARM64 (Preview)</h4>
+                <p>Raspberry Pi / Apple Silicon</p>
+                <button class="btn-primary download-iso" data-iso="FuturaOS_2.5_arm64.iso"><i class="fas fa-download"></i> Скачать IMG</button>
+            </div>
+            <div class="download-card">
+                <h4><i class="fas fa-rocket" aria-hidden="true"></i> Live USB</h4>
+                <p>Загрузка без установки</p>
+                <button class="btn-primary download-iso" data-iso="FuturaOS_live_2.5.iso"><i class="fas fa-download"></i> Live ISO</button>
+            </div>
+        </div>
+        <p style="font-size:0.7rem; margin-top: 24px;">SHA-256: 4b3a...d1e7 | Цифровая подпись | Лицензионное соглашение</p>
+        <div id="downloadStatus" style="margin-top: 16px; font-size:0.85rem;" role="status" aria-live="polite"></div>
+    </section>
+</main>
+
+<footer class="container footer">
+    <p>FuturaOS — проприетарная операционная система. Все права защищены.</p>
+    <p style="margin-top: 16px;">© 2025–<span id="currentYear"></span> Alexsey_Pip. <i class="fab fa-github" aria-hidden="true"></i> <a href="https://github.com/AlexseyPip">GitHub</a></p>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>
