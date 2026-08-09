@@ -22,7 +22,7 @@ html, body {
 
 .os-cursor {
     position: fixed;
-    width: 400px;
+    width: 35px !important;
     height: 35px;
     pointer-events: none;
     z-index: 10000;
