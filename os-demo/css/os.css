@@ -22,13 +22,12 @@ html, body {
 
 .os-cursor {
     position: fixed;
-    width: 35px;
+    width: 400px;
     height: 35px;
     pointer-events: none;
     z-index: 10000;
     transform: translate(-2px, -2px);
     background: url('../../img/os-demo/icons/24/mouse-relative.png') center/contain no-repeat;
-    transition: transform 0.05s linear;
 }
 
 .os-cursor.clicking {
