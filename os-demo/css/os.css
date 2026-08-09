@@ -22,8 +22,8 @@ html, body {
 
 .os-cursor {
     position: fixed;
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 35px;
     pointer-events: none;
     z-index: 10000;
     transform: translate(-2px, -2px);
