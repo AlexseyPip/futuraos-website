@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Документация FuturaOS — установка, P2P, терминал</title>
-    <meta name="description" content="Официальная документация FuturaOS: установка, настройка P2P магазина, работа с терминалом, пакетный менеджер и лицензия.">
+    <title>Документация FuturaOS 1.0 — установка, WM, терминал</title>
+    <meta name="description" content="Официальная документация FuturaOS 1.0: установка на USB, управление оконными менеджерами, запуск игр и полезные команды.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://futuraos.ru/dokumentatsiya/">
     <link rel="alternate" hreflang="ru" href="https://futuraos.ru/dokumentatsiya/">
@@ -24,7 +24,6 @@
                 <a href="/skachat/">Скачать</a>
                 <a href="/dokumentatsiya/" class="active">Документация</a>
                 <a href="/blog/">Блог</a>
-                <a href="/os-demo/">Демо</a>
             </div>
             <div class="lang-switch"><a href="/dokumentatsiya/" class="active">RU</a><a href="/en/docs/">EN</a></div>
             <button class="burger-menu" id="burgerBtn"><i class="fas fa-bars"></i></button>
@@ -38,66 +37,84 @@
     <a href="/skachat/">Скачать</a>
     <a href="/dokumentatsiya/">Документация</a>
     <a href="/blog/">Блог</a>
-    <a href="/os-demo/">Демо</a>
     <div class="lang-switch"><a href="/dokumentatsiya/" class="active">RU</a><a href="/en/docs/">EN</a></div>
 </nav>
 
 <main class="container">
     <nav class="breadcrumbs"><a href="/">Главная</a> / Документация</nav>
     <header class="page-header">
-        <h1>Документация</h1>
-        <p>Руководства по установке, настройке и использованию FuturaOS.</p>
+        <h1>Документация FuturaOS 1.0</h1>
+        <p>Краткое руководство по установке, настройке и использованию.</p>
     </header>
 
     <div class="docs-layout">
         <aside class="docs-sidebar">
             <nav aria-label="Содержание">
                 <a href="#ustanovka" class="active">Установка</a>
-                <a href="#p2p">P2P магазин</a>
+                <a href="#wm">Оконный менеджер</a>
                 <a href="#terminal">Терминал</a>
-                <a href="#pakety">Пакетный менеджер</a>
-                <a href="#bezopasnost">Безопасность</a>
-                <a href="#licenziya">Лицензия</a>
+                <a href="#igry">Игры и софт</a>
+                <a href="#infinite">Бесконечный холст</a>
+                <a href="#sovmestimost">Совместимость</a>
             </nav>
         </aside>
         <article class="docs-content">
-            <h2 id="ustanovka">Установка</h2>
-            <p>Для установки FuturaOS скачайте ISO-образ с <a href="/skachat/">страницы загрузки</a> и запишите его на USB-накопитель объёмом не менее 8 ГБ.</p>
-            <p>Команда для записи через терминал Linux/macOS:</p>
-            <p><code>dd if=FuturaOS_2.5_amd64.iso of=/dev/sdX bs=4M status=progress</code></p>
-            <p>Замените <code>/dev/sdX</code> на ваш USB-накопитель. После записи перезагрузите компьютер и выберите загрузку с USB.</p>
-
-            <h2 id="p2p">P2P магазин приложений</h2>
-            <p>P2P магазин использует IPFS и DHT для распространения приложений. Для установки пакета:</p>
+            
+            <h2 id="ustanovka">Установка (Live USB)</h2>
+            <p>Скачайте ISO-образ с <a href="/skachat/">страницы загрузки</a>. Для записи используйте <strong>Rufus</strong> (рекомендуется) или любой другой инструмент для записи ISO.</p>
+            
+            <h3>Как правильно записать образ (Rufus):</h3>
             <ol>
-                <li>Откройте P2P App Store из меню приложений</li>
-                <li>Найдите приложение или вставьте magnet-ссылку / CID</li>
-                <li>Нажмите «Установить» — клиент загрузит и верифицирует пакет</li>
+                <li>Выберите USB-накопитель (все данные на нём будут удалены).</li>
+                <li>Укажите скачанный ISO-образ.</li>
+                <li><strong>Схема раздела:</strong> выберите <code>GPT</code>.</li>
+                <li><strong>Целевая система:</strong> выберите <code>UEFI (не CSM)</code>.</li>
+                <li>Нажмите «Старт» и выберите <strong>«Запись в DD-образе»</strong>.</li>
             </ol>
-            <p>Пример magnet-ссылки: <code>magnet:?xt=urn:btih:futura_editor_latest</code></p>
+            <p class="warning"><strong>Предупреждение:</strong> Все данные на USB-накопителе будут безвозвратно удалены.</p>
 
-            <h2 id="terminal">Терминал</h2>
-            <p>FuturaOS поставляется с bash 5.2 и полным набором POSIX-утилит. Стандартные команды Linux работают без изменений:</p>
+            <p>После записи перезагрузите компьютер, войдите в меню загрузки (обычно <code>F12</code>) и выберите загрузку с USB.</p>
+
+            <h2 id="wm">Оконный менеджер (WM)</h2>
+            <p>FuturaOS поддерживает три режима работы с окнами. Переключение происходит через терминал командой:</p>
+            <p><code>wmctl mode &lt;режим&gt;</code></p>
             <ul>
-                <li><code>ls</code>, <code>cd</code>, <code>grep</code>, <code>find</code> — файловые операции</li>
-                <li><code>gcc</code>, <code>make</code>, <code>python3</code> — разработка</li>
-                <li><code>systemctl</code> — управление службами</li>
+                <li><strong>wayland</strong> — классический плавающий режим (по умолчанию).</li>
+                <li><strong>tiling</strong> — строгая сетка для максимальной продуктивности.</li>
+                <li><strong>infinite</strong> — бесконечный масштабируемый холст с космическим фоном.</li>
             </ul>
 
-            <h2 id="pakety">Пакетный менеджер</h2>
-            <p>Команда <code>futura-pkg</code> управляет пакетами из P2P-каталога:</p>
+            <h2 id="terminal">Терминал и полезные команды</h2>
+            <p>Откройте терминал (<code>Ctrl+Alt+T</code> или иконка на рабочем столе). Доступные команды:</p>
             <ul>
-                <li><code>futura-pkg install &lt;имя&gt;</code> — установка</li>
-                <li><code>futura-pkg remove &lt;имя&gt;</code> — удаление</li>
-                <li><code>futura-pkg update</code> — обновление всех пакетов</li>
-                <li><code>futura-pkg search &lt;запрос&gt;</code> — поиск</li>
+                <li><code>sysinfo</code> — информация о системе и загрузке CPU.</li>
+                <li><code>web-browser</code> — запуск браузера (рекомендуется запускать с интернетом).</li>
+                <li><code>file-browser</code> — файловый менеджер.</li>
+            </ul>
+            <p><em>Примечание: Wi‑Fi на железе находится в стадии доработки. На эмуляторах (QEMU/VirtualBox) интернет работает через эмуляцию Ethernet.</em></p>
+
+            <h2 id="igry">Игры и приложения</h2>
+            <p>На рабочем столе расположены иконки <strong>Doom</strong> и <strong>Quake</strong>. Они устанавливаются по клику:</p>
+            <ul>
+                <li><strong>Двойной клик</strong> по иконке → автоматическая установка и запуск игры.</li>
+                <li>При повторном клике игра запускается без повторной установки.</li>
+                <li>Игры запускаются без необходимости ввода команд в терминале.</li>
             </ul>
 
-            <h2 id="bezopasnost">Безопасность</h2>
-            <p>Все пакеты подписываются цифровыми ключами разработчиков. Система проверяет подпись перед установкой. Рекомендуется включить автоматические обновления безопасности в Центре управления.</p>
+            <h2 id="infinite">Бесконечный холст (Infinite Mode)</h2>
+            <p>В режиме <code>infinite</code> фоном служит живая солнечная система.</p>
+            <ul>
+                <li><strong>Зум:</strong> используйте колёсико мыши для приближения и отдаления.</li>
+                <li><strong>Панорамирование:</strong> зажмите среднюю кнопку мыши и двигайте курсором.</li>
+            </ul>
 
-            <h2 id="licenziya">Лицензия</h2>
-            <p>FuturaOS — проприетарное программное обеспечение. Бесплатно для домашнего использования. Коммерческое использование требует отдельной лицензии. Подробности — на futuraos.ru.</p>
+            <h2 id="sovmestimost">Совместимость с железом</h2>
+            <ul>
+                <li>Поддерживаются <strong>UEFI</strong> и Legacy BIOS.</li>
+                <li>USB-порты <strong>3.0</strong> работают стабильно; порты 2.0 — в стадии тестирования.</li>
+                <li>Мышь и клавиатура работают через USB.</li>
+            </ul>
+
         </article>
     </div>
 </main>
