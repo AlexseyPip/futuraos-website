@@ -8,7 +8,6 @@
 На сайте вы найдете:
 - Обзор возможностей системы
 - Ссылки для загрузки
-- Интерактивное демо
 - Документацию и руководства
 - Новости и анонсы обновлений
 
@@ -22,6 +21,5 @@ FuturaOS is a modern operating system focused on performance and security.
 The website features:
 - Overview of system capabilities
 - Download links
-- Interactive demo
 - Documentation and guides
 - News and update announcements
